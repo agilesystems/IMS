@@ -15,7 +15,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -24,31 +27,48 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "user")
-
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+    , @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
+    , @NamedQuery(name = "User.findByAddress", query = "SELECT u FROM User u WHERE u.address = :address")
+    , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
+    , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
+    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
+    , @NamedQuery(name = "User.findByPhone", query = "SELECT u FROM User u WHERE u.phone = :phone")
+    , @NamedQuery(name = "User.findByType", query = "SELECT u FROM User u WHERE u.type = :type")
+    , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")})
 public class User implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @ManyToMany(mappedBy = "userCollection",fetch = FetchType.EAGER)
-    private Collection<Menu> menuCollection;
-
+    @Column(name = "address")
+    private String address;
     @Column(name = "firstname")
-    private String firstName;
+    private String firstname;
     @Column(name = "lastname")
-    private String lastName;
-    @Column(name = "username")
-    private String username;
+    private String lastname;
     @Column(name = "password")
     private String password;
     @Column(name = "phone")
     private String phone;
-    @Column(name = "address")
-    private String address;
-    @Column(name = "type", insertable = true)
+    @Column(name = "type")
     private String type;
+    @Column(name = "username")
+    private String username;
+    @ManyToMany(mappedBy = "userCollection", fetch = FetchType.EAGER)
+    private Collection<UserMenu> userMenuCollection;
+
+    public User() {
+    }
+
+    public User(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;
@@ -58,28 +78,28 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getAddress() {
+        return address;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -98,14 +118,6 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getType() {
         return type;
     }
@@ -114,33 +126,21 @@ public class User implements Serializable {
         this.type = type;
     }
 
-    public User(String firstName, String lastName, String username, String password, String phone, String address, String type) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.address = address;
-        this.type = type;
     }
-
-    public User() {
-
-    }
-
-    public User(Integer id) {
-        this.id = id;
-    }
-
 
     @XmlTransient
-    public Collection<Menu> getMenuCollection() {
-
-        return menuCollection;
+    public Collection<UserMenu> getUserMenuCollection() {
+        return userMenuCollection;
     }
 
-    public void setMenuCollection(Collection<Menu> menuCollection) {
-        this.menuCollection = menuCollection;
+    public void setUserMenuCollection(Collection<UserMenu> userMenuCollection) {
+        this.userMenuCollection = userMenuCollection;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.agilesolutions.xnet.pharmanet.inventory.entity.User[ id=" + id + " ]";
+        return "com.agile.ims.entity.User[ id=" + id + " ]";
     }
-
+    
 }

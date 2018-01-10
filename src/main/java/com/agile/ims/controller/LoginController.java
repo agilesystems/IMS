@@ -12,7 +12,6 @@ import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import com.agile.ims.helper.Routes;
 import com.agile.ims.IMS;
-import com.agile.ims.entity.Menu;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -121,17 +120,17 @@ public class LoginController implements Initializable {
 
     private void loadAllFroms() {
         Routes.forms = new HashMap<Integer, AnchorPane>();
-        IMS.user.getMenuCollection().stream().filter((m) -> !(m.getForm() == null)).map((m) -> {
-            System.out.println(m.getForm().toString());
+        IMS.user.getUserMenuCollection().stream().filter((m) -> !(m.getFxml() == null)).map((m) -> {
             return m;
         }).forEachOrdered((m) -> {
             try {
 
                 System.out.println("add form" + m.toString());
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(m.getForm().getFxml()));
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(m.getFxml()));
                 if (anchorPane != null) {
-                    Routes.forms.put(m.getForm().getId(),
-                            FXMLLoader.load(getClass().getResource(m.getForm().getFxml()))
+                    Routes.forms.put(m.getId(),
+                           null
+//                            FXMLLoader.load(getClass().getResource(m.getFxml()))
                     );
                 }
             } catch (IOException ex) {

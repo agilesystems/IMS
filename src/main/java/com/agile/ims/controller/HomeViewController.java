@@ -6,18 +6,20 @@
 package com.agile.ims.controller;
 
 import com.agile.ims.IMS;
-import com.agile.ims.entity.Menu;
+import com.agile.ims.entity.UserMenu;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.agile.ims.helper.Routes;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -94,6 +96,36 @@ public class HomeViewController implements Initializable {
                         }
                     });
                 }
+                if (node instanceof JFXTextField && node.getId().equals("searchTextField")) {
+                    
+                    JFXTextField searchTEXTField = (JFXTextField) node;
+                    searchTEXTField.setOnAction((ActionEvent v) -> {
+                        int formId = 0;
+                        if (!searchTEXTField.getText().isEmpty()) {
+                            try {
+                                formId = Integer.parseInt(searchTEXTField.getText());
+                                if (formId == 0) {
+                                    return;
+                                }
+                                for (UserMenu m : IMS.user.getUserMenuCollection()) {
+                                    
+                                    if (formId == m.getId()) {
+                                        
+                                        drawer.close();
+                                        txtCurrentWindow.setText(m.getTitle());
+                                        setNode(Routes.forms.get(formId));
+                                        
+                                        break;
+                                    }
+                                }
+                                
+                            } catch (NumberFormatException ex) {
+                                Logger.getLogger(DrawerController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                        }
+                    });
+                }
                 
             }
         } catch (IOException ex) {
@@ -111,7 +143,7 @@ public class HomeViewController implements Initializable {
     public void drawMenus() {
         
         MenuButton rootMenu = null;
-        for (Menu uMenu : IMS.user.getMenuCollection()) {
+        for (UserMenu uMenu : IMS.user.getUserMenuCollection()) {
             if (uMenu.getParent() == null) {
 
 //                if (uMenu.getSubMenus().size() == 0) {
@@ -133,29 +165,21 @@ public class HomeViewController implements Initializable {
                 rootMenu.setPrefWidth(200.0);
                 rootMenu.setLayoutX(10.0);
                 rootMenu.setLayoutY(10.0);
+                
                 rootMenu.getStylesheets().add("@../styles/styles.css");
                 rootMenu.getStyleClass().add("drawer-buttons");
-                
-                for (Menu m : IMS.user.getMenuCollection()) {
+//                rootMenu.setStyle("-fx-text-fill: white");
+                for (UserMenu m : IMS.user.getUserMenuCollection()) {
                     if (m.getParent() != null && m.getParent().getId() == uMenu.getId()) {
                         javafx.scene.control.Menu subMenu = new javafx.scene.control.Menu(m.getTitle());
                         subMenu.setOnAction(v -> {
-
-                            //AnchorPane newNode = FXMLLoader.load(getClass().getResource(m.getForm().getFxml()));
-//                                try {
-//                                    if (holderPane.getChildren().get(0).getId().equals(newNode.getId())) {
-//                                        return;
-//                                    }
-//
-//                                } catch (Exception e) {
-//
-//                                }
-                            drawer.close();
                             
-                            setNode(Routes.forms.get(m.getForm().getId()));
-                            txtCurrentWindow.setText(m.getForm().getTitle());
+                            drawer.close();
+                            setNode(Routes.anchorPane(m.getId()));
+//                            setNode(Routes.forms.get(m.getId()));
+                            txtCurrentWindow.setText(m.getTitle());
                         });
-                        
+//                        subMenu.setStyle("-fx-text-fill: white");
                         rootMenu.getItems().add(subMenu);
                     }
                 }

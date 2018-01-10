@@ -1,13 +1,13 @@
 .root{
     -fx-background-color: #ffffff;
     -fx-font-size:14.0px;
-/*    -fx-font-family: Roboto;	
-    src:"/fonts/Roboto-Regular.ttf";*/
+    /*    -fx-font-family: Roboto;	
+        src:"/fonts/Roboto-Regular.ttf";*/
     -swatchBlue:#3c8dbc;
     -darkSide:#222d32;
 }
 @font-face {
-     -fx-font-family: Roboto;
+    -fx-font-family: Roboto;
     src:"/fonts/Roboto-Regular.ttf";
 }
 .lgBtn{
@@ -100,19 +100,22 @@
     -fx-background-radius: 5em;    
 }
 .drawer-buttons{
-    -fx-background-color: rgb(0, 192, 239);
-    -fx-text-alignment: left;
-    -fx-text-fill: #222d32;
-     -fx-font-size:14px;
+    /*rgb(0, 166, 90);*/
+    -fx-background-color: #5077ff /* #0099e4*/;
+    -fx-text-alignment: right;
+    -fx-text-fill: #ffffff;
+    -fx-font-size:14px;
+
     -fx-padding: 0 0 0 30;
     -fx-alignment:CENTER_LEFT ;
 }
 .drawer-buttons:hover{
-    -fx-background-color:#cccccc;
-   
+    -fx-background-color:#f39c12;
+
 }
-
-
+.drawer-buttons>.label {
+    -fx-text-fill: white;
+}
 
 .blue-btn{
     -fx-background-color: rgb(0, 192, 239);
@@ -137,7 +140,7 @@
     -fx-font-size:16px;
     -fx-font-weight:bold ;
     -fx-pref-width: 100px;
-    
+
 }
 
 
@@ -323,3 +326,36 @@ search field
 .blue-titledPane> .title> .arrow-button .arrow{
     -fx-background-color: white;
 }
+/*
+.menu-item{
+    -fx-background-color: #5077ff  #0099e4;
+    -fx-text-alignment: right;
+    -fx-text-fill: #ffffff;
+    -fx-font-size:14px;
+    -fx-padding: 0 0 0 30;
+    -fx-alignment:CENTER_LEFT ;
+}
+.menu-item:hover{
+    -fx-background-color:#f39c12;
+
+}
+.menu-item .label {
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+    -fx-background-color: darkgray;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: blue;
+}*/
+/*
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: black;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+        -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;  4 1 8 1 
+}*/
