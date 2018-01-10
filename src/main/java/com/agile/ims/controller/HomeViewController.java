@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -46,8 +48,9 @@ public class HomeViewController implements Initializable {
     @FXML
     private Label txtCurrentWindow;
     private VBox sidePane;
+    @FXML
+    private AnchorPane homeAnchorPane;
 
-    
     /**
      * Initializes the controller class.
      *
@@ -88,7 +91,15 @@ public class HomeViewController implements Initializable {
                                 txtCurrentWindow.setText("X-Net");
                                 setNode(welcome);
                                 break;
+                            case "logOut":
+                                try {
 
+                                    new IMS().start(new Stage());
+                                    IMS.stage.close();
+                                } catch (Exception ex) {
+                                    Logger.getLogger(DrawerController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                break;
                         }
                     });
                 }
@@ -99,9 +110,9 @@ public class HomeViewController implements Initializable {
 
                         if (!searchTEXTField.getText().isEmpty()) {
                             try {
-                                Routes.openNode(this,Integer.parseInt(searchTEXTField.getText()));         
+                                Routes.openNode(this, Integer.parseInt(searchTEXTField.getText()));
                             } catch (NumberFormatException ex) {
-                                 new Alert(Alert.AlertType.ERROR, "من فضلك  ادخل رقم صحيح").show();
+                                new Alert(Alert.AlertType.ERROR, "من فضلك  ادخل رقم صحيح").show();
                                 Logger.getLogger(DrawerController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
@@ -166,5 +177,5 @@ public class HomeViewController implements Initializable {
     public Label getTxtCurrentWindow() {
         return txtCurrentWindow;
     }
-    
+
 }

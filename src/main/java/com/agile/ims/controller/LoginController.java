@@ -65,6 +65,9 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         loggingProgress.setVisible(false);
+        IMS.user=null;
+//        IMS.stage=null;
+        Routes.forms=null;
     }
 
     @FXML
@@ -95,20 +98,20 @@ public class LoginController implements Initializable {
                 User user = new User();
                 user.setUsername(txtUsername.getText());
                 loadAllFroms();
-                Stage stage = new Stage();
+                IMS.stage = new Stage();
                 Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW));
                 root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                JFXDecorator decorator = new JFXDecorator(stage, root, false, true, true);
+                JFXDecorator decorator = new JFXDecorator(IMS.stage, root, false, true, true);
                 decorator.setCustomMaximize(true);
                 decorator.setBorder(Border.EMPTY);
                 
                 Scene scene = new Scene(decorator);
                 scene.getStylesheets().add(IMS.class.getResource("/styles/styles.css").toExternalForm());
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(scene);
-                
-                stage.setIconified(false);
-                stage.show();
+                IMS.stage.initStyle(StageStyle.UNDECORATED);
+                IMS.stage.setScene(scene);
+                IMS.stage.setTitle("X-NET");
+                IMS.stage.setIconified(false);
+                IMS.stage.show();
                 //Hide login window
                 btnLogin.getScene().getWindow().hide();
             } catch (IOException ex) {

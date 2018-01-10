@@ -8,6 +8,7 @@ package com.agile.ims.controller;
 import com.agile.ims.IMS;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.java.swing.plaf.windows.resources.windows;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,6 +35,8 @@ public class DrawerController implements Initializable {
     private JFXTextField searchTEXTField;
     @FXML
     private JFXTextField searchTextField;
+    @FXML
+    private JFXButton logoutBtn;
 
     /**
      * Initializes the controller class.
@@ -41,18 +44,11 @@ public class DrawerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-   
     }
 
+    @FXML
     private void logOut(ActionEvent event) {
-        try {
-            Stage window = (Stage) exitBtn.getScene().getWindow();
-            IMS hospitalFX = new IMS();
-            hospitalFX.start(new Stage());
-            window.close();
-        } catch (Exception ex) {
-            Logger.getLogger(DrawerController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
 
     }
 

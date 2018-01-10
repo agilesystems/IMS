@@ -18,64 +18,39 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class IMS extends Application {
 
-//    
-//    private double xOffset = 0;
-//    private double yOffset = 0;
     public static User user;
     public static ConfigurableApplicationContext context;
     private Parent root;
-//    public static final String TITLE = "Inventory v 1.0";
-//    public static final String ICON_PATH="/images/logo.png";
-//    public static final String LOGIN_PATH="/fxml/Login.fxml";
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//
-//        rootNode.setOnMousePressed((MouseEvent event) -> {
-//            xOffset = event.getSceneX();
-//            yOffset = event.getSceneY();
-//        });
-//        rootNode.setOnMouseDragged((MouseEvent event) -> {
-//            stage.setX(event.getScreenX() - xOffset);
-//            stage.setY(event.getScreenY() - yOffset);
-//        });
-//        Scene scene = new Scene(rootNode);
-//        stage.setTitle("Inventory: Version 1.0");
-//        stage.initStyle(StageStyle.UNDECORATED);
-//        stage.setScene(scene);
-//        stage.show();
-//
-//    }
-//
+    public static Stage stage;
 
     @Override
     public void init() throws Exception {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(IMS.class);
         context = builder.run(getParameters().getRaw().toArray(new String[0]));
-        System.out.println(getClass().getResource(Routes.LOGINVIEW));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.LOGINVIEW));
-        loader.setControllerFactory(context::getBean);
-        root = loader.load();
-        
+       
+
     }
-    
+
     @Override
     public void stop() throws Exception {
         context.close();
     }
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-        // Parent root = FXMLLoader.load(getClass().getResource(Routes.LOGINVIEW));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.LOGINVIEW));
+        loader.setControllerFactory(context::getBean);
+        root = loader.load();
 
         JFXDecorator decorator = new JFXDecorator(stage, root, false, false, true);
         decorator.setCustomMaximize(false);
         decorator.setBorder(Border.EMPTY);
-        
         Scene scene = new Scene(decorator);
         scene.getStylesheets().add(IMS.class.getResource("/styles/styles.css").toExternalForm());
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
-        stage.setTitle("PHARMA NET V 1.0");
+        stage.setTitle("X-NET V 1.0");
         stage.setIconified(false);
         stage.show();
     }

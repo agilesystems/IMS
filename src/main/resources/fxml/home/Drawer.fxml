@@ -15,8 +15,10 @@
             </image>
         </ImageView>
         <JFXTextField fx:id="searchTextField" focusColor="#00add8" labelFloat="false" promptText="Search by Form ID" unFocusColor="#868282" />  
-         <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Home" />                                                
-<!--        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Home" />
+        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Home" />    
+        <JFXButton fx:id="logoutBtn" accessibleText="logOut" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Logout" />                                                
+                                            
+        <!--        <JFXButton fx:id="homeBtn" accessibleText="homeMenu" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Home" />
         <JFXButton fx:id="doctorBtn" accessibleText="doctorMenu" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Doctors" />
         <JFXButton fx:id="appointmentBtn" accessibleText="appointmentMenu" layoutX="10.0" layoutY="53.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Appointments" />
         <JFXButton fx:id="paymentBtn" accessibleText="paymentMenu" layoutX="10.0" layoutY="96.0" prefHeight="43.0" prefWidth="200.0" styleClass="drawer-buttons" text="Payments" />

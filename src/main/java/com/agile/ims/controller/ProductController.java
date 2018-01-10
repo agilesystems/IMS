@@ -93,7 +93,6 @@ public class ProductController implements Initializable {
         productsTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                //Check whether item is selected and set value of selected item to Label
                 if (productsTable.getSelectionModel().getSelectedItem() != null) {
                     Product p = productsTable.getSelectionModel().getSelectedItem();
                     new Alert(Alert.AlertType.CONFIRMATION, p.getName()).show();
