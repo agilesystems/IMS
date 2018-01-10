@@ -6,12 +6,15 @@
 package com.agile.ims.helper;
 
 import com.agile.ims.IMS;
+import com.agile.ims.controller.HomeViewController;
 import com.agile.ims.entity.UserMenu;
+import com.jfoenix.controls.JFXDrawer;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -57,5 +60,29 @@ public class Routes {
             }
         }
         return null;
+    }
+
+    /**
+     * add node to the holderPane
+     *
+     * @param holderPane current opening holder pane
+     * @param drawer
+     * @param node node to be open
+     */
+    public static void openNode(HomeViewController home, int formId) {
+        AnchorPane form = Routes.anchorPane(formId);
+        if (form == null) {
+            return;
+        }
+        home.getDrawer().close();
+        home.getHolderPane().getChildren().clear();
+        home.getHolderPane().getChildren().add(form);
+        for (UserMenu um : IMS.user.getUserMenuCollection()) {
+            if (um.getId() == formId) {
+                home.getTxtCurrentWindow().setText(um.getTitle());
+                return;
+            }
+        }
+
     }
 }

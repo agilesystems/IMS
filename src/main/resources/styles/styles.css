@@ -101,7 +101,7 @@
 }
 .drawer-buttons{
     /*rgb(0, 166, 90);*/
-    -fx-background-color: #5077ff /* #0099e4*/;
+    -fx-background-color:#222d32 /* #5077ff  #0099e4*/;
     -fx-text-alignment: right;
     -fx-text-fill: #ffffff;
     -fx-font-size:14px;
@@ -116,7 +116,14 @@
 .drawer-buttons>.label {
     -fx-text-fill: white;
 }
-
+.orang-btn{
+    -fx-background-color: #F39C12;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: right;
+    -fx-button-type:raised;
+    -fx-font-size:16px;
+    -fx-font-weight:bold ;
+}
 .blue-btn{
     -fx-background-color: rgb(0, 192, 239);
     -fx-text-fill: #ffffff;

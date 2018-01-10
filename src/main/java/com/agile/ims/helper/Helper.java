@@ -30,6 +30,7 @@ public class Helper {
             for (String fName : fields) {
                 if (fName.equalsIgnoreCase(f.getName())) {
                     TableColumn col = new TableColumn(f.getName());
+
                     col.setCellValueFactory(new PropertyValueFactory<>(f.getName()));
                     table.getColumns().add(col);
                 }
