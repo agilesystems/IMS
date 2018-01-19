@@ -5,7 +5,7 @@
  */
 package com.agile.ims.repository;
 
-import com.agile.ims.entity.Invoiceitem;
+import com.agile.ims.entity.InvoiceItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Muhammad
  */
 @Repository
-public interface InvoiceitemRepository extends JpaRepository<Invoiceitem, Integer> {
+public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Integer> {
 
 }

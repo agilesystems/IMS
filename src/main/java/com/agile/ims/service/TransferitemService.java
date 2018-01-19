@@ -6,7 +6,7 @@
 package com.agile.ims.service;
 
 import com.agile.ims.entity.Item;
-import com.agile.ims.entity.Transferitem;
+import com.agile.ims.entity.TransferItem;
 import java.util.Collection;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +17,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TransferitemService {
 
-    boolean save(Transferitem transferItem);
+    boolean save(TransferItem transferItem);
 
-    boolean delete(Transferitem transferitem);
+    boolean delete(TransferItem transferitem);
 
-    Collection<Transferitem> getByItemid(Item item);
+    Collection<TransferItem> getByItemid(Item item);
 }

@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,84 +24,81 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Muhammad
+ * @author ramy
  */
 @Entity
-@Table(catalog = "inventory", schema = "")
-@XmlRootElement
+@Table(name = "item")
 @NamedQueries({
-    @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i")
-    , @NamedQuery(name = "Item.findById", query = "SELECT i FROM Item i WHERE i.id = :id")
-    , @NamedQuery(name = "Item.findByName", query = "SELECT i FROM Item i WHERE i.name = :name")
-    , @NamedQuery(name = "Item.findBySalprice", query = "SELECT i FROM Item i WHERE i.salprice = :salprice")
-    , @NamedQuery(name = "Item.findByBuyprice", query = "SELECT i FROM Item i WHERE i.buyprice = :buyprice")
-    , @NamedQuery(name = "Item.findByBarcode", query = "SELECT i FROM Item i WHERE i.barcode = :barcode")
-    , @NamedQuery(name = "Item.findByGlobalcode", query = "SELECT i FROM Item i WHERE i.globalcode = :globalcode")
-    , @NamedQuery(name = "Item.findByLocalcode", query = "SELECT i FROM Item i WHERE i.localcode = :localcode")
-    , @NamedQuery(name = "Item.findByLowestprice", query = "SELECT i FROM Item i WHERE i.lowestprice = :lowestprice")
-    , @NamedQuery(name = "Item.findByLowestquantity", query = "SELECT i FROM Item i WHERE i.lowestquantity = :lowestquantity")
-    , @NamedQuery(name = "Item.findByExpiredate", query = "SELECT i FROM Item i WHERE i.expiredate = :expiredate")
-    , @NamedQuery(name = "Item.findByIsdead", query = "SELECT i FROM Item i WHERE i.isdead = :isdead")
-    , @NamedQuery(name = "Item.findByExtrainfo", query = "SELECT i FROM Item i WHERE i.extrainfo = :extrainfo")
-    , @NamedQuery(name = "Item.findByPhotopath", query = "SELECT i FROM Item i WHERE i.photopath = :photopath")
-    , @NamedQuery(name = "Item.findByCreatedat", query = "SELECT i FROM Item i WHERE i.createdat = :createdat")
-    , @NamedQuery(name = "Item.findByUpdatedby", query = "SELECT i FROM Item i WHERE i.updatedby = :updatedby")
-    , @NamedQuery(name = "Item.findByUpdatedat", query = "SELECT i FROM Item i WHERE i.updatedat = :updatedat")
-    , @NamedQuery(name = "Item.findByDeleted", query = "SELECT i FROM Item i WHERE i.deleted = :deleted")
-    , @NamedQuery(name = "Item.findByDeletedby", query = "SELECT i FROM Item i WHERE i.deletedby = :deletedby")})
+    @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i")})
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
     @Size(max = 255)
+    @Column(name = "name")
     private String name;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "salprice")
     private BigDecimal salprice;
+    @Column(name = "buyprice")
     private BigDecimal buyprice;
     @Size(max = 255)
+    @Column(name = "barcode")
     private String barcode;
     @Size(max = 255)
+    @Column(name = "globalcode")
     private String globalcode;
     @Size(max = 255)
+    @Column(name = "localcode")
     private String localcode;
+    @Column(name = "lowestprice")
     private BigDecimal lowestprice;
+    @Column(name = "lowestquantity")
     private Integer lowestquantity;
+    @Column(name = "expiredate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date expiredate;
+    @Column(name = "isdead")
     private Boolean isdead;
     @Size(max = 255)
+    @Column(name = "extrainfo")
     private String extrainfo;
     @Size(max = 255)
+    @Column(name = "photopath")
     private String photopath;
+    @Column(name = "createdat")
     @Temporal(TemporalType.DATE)
     private Date createdat;
+    @Column(name = "updatedby")
     private Integer updatedby;
+    @Column(name = "updatedat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
+    @Column(name = "deleted")
     private Boolean deleted;
+    @Column(name = "deletedby")
     private Integer deletedby;
     @JoinColumn(name = "unitid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Lookup unitid;
     @JoinColumn(name = "groupid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Lookup groupid;
     @JoinColumn(name = "createdby", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private User createdby;
-    @OneToMany(mappedBy = "itemid", fetch = FetchType.EAGER)
-    private Collection<Invoiceitem> invoiceitemCollection;
-    @OneToMany(mappedBy = "itemid", fetch = FetchType.EAGER)
-    private Collection<Transferitem> transferitemCollection;
-    @OneToMany(mappedBy = "itemid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "itemid")
+    private Collection<InvoiceItem> invoiceItemCollection;
+    @OneToMany(mappedBy = "itemid")
+    private Collection<TransferItem> transferItemCollection;
+    @OneToMany(mappedBy = "itemid")
     private Collection<StoreItem> storeItemCollection;
 
     public Item() {
@@ -279,25 +276,22 @@ public class Item implements Serializable {
         this.createdby = createdby;
     }
 
-    @XmlTransient
-    public Collection<Invoiceitem> getInvoiceitemCollection() {
-        return invoiceitemCollection;
+    public Collection<InvoiceItem> getInvoiceItemCollection() {
+        return invoiceItemCollection;
     }
 
-    public void setInvoiceitemCollection(Collection<Invoiceitem> invoiceitemCollection) {
-        this.invoiceitemCollection = invoiceitemCollection;
+    public void setInvoiceItemCollection(Collection<InvoiceItem> invoiceItemCollection) {
+        this.invoiceItemCollection = invoiceItemCollection;
     }
 
-    @XmlTransient
-    public Collection<Transferitem> getTransferitemCollection() {
-        return transferitemCollection;
+    public Collection<TransferItem> getTransferItemCollection() {
+        return transferItemCollection;
     }
 
-    public void setTransferitemCollection(Collection<Transferitem> transferitemCollection) {
-        this.transferitemCollection = transferitemCollection;
+    public void setTransferItemCollection(Collection<TransferItem> transferItemCollection) {
+        this.transferItemCollection = transferItemCollection;
     }
 
-    @XmlTransient
     public Collection<StoreItem> getStoreItemCollection() {
         return storeItemCollection;
     }
@@ -330,5 +324,5 @@ public class Item implements Serializable {
     public String toString() {
         return "com.agile.ims.entity.Item[ id=" + id + " ]";
     }
-
+    
 }

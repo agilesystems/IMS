@@ -6,7 +6,6 @@
 package com.agile.ims.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,18 +17,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
  * @author ramy
  */
 @Entity
-@Table(name = "store_item")
+@Table(name = "invoice_item")
 @NamedQueries({
-    @NamedQuery(name = "StoreItem.findAll", query = "SELECT s FROM StoreItem s")})
-public class StoreItem implements Serializable {
+    @NamedQuery(name = "InvoiceItem.findAll", query = "SELECT i FROM InvoiceItem i")})
+public class InvoiceItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,32 +36,26 @@ public class StoreItem implements Serializable {
     private Integer id;
     @Column(name = "quantity")
     private Integer quantity;
-    @Column(name = "createdat")
-    @Temporal(TemporalType.DATE)
-    private Date createdat;
-    @Column(name = "updatedby")
-    private Integer updatedby;
-    @Column(name = "updatedat")
-    @Temporal(TemporalType.DATE)
-    private Date updatedat;
-    @Column(name = "deleted")
-    private Boolean deleted;
-    @Column(name = "deletedby")
-    private Integer deletedby;
-    @JoinColumn(name = "storeid", referencedColumnName = "id")
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "price")
+    private Float price;
+    @Column(name = "discountpr")
+    private Integer discountpr;
+    @Column(name = "discountvalue")
+    private Float discountvalue;
+    @Column(name = "total")
+    private Float total;
+    @JoinColumn(name = "invoiceid", referencedColumnName = "id")
     @ManyToOne
-    private Store storeid;
+    private Invoice invoiceid;
     @JoinColumn(name = "itemid", referencedColumnName = "id")
     @ManyToOne
     private Item itemid;
-    @JoinColumn(name = "createdby", referencedColumnName = "id")
-    @ManyToOne
-    private User createdby;
 
-    public StoreItem() {
+    public InvoiceItem() {
     }
 
-    public StoreItem(Integer id) {
+    public InvoiceItem(Integer id) {
         this.id = id;
     }
 
@@ -84,52 +75,44 @@ public class StoreItem implements Serializable {
         this.quantity = quantity;
     }
 
-    public Date getCreatedat() {
-        return createdat;
+    public Float getPrice() {
+        return price;
     }
 
-    public void setCreatedat(Date createdat) {
-        this.createdat = createdat;
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
-    public Integer getUpdatedby() {
-        return updatedby;
+    public Integer getDiscountpr() {
+        return discountpr;
     }
 
-    public void setUpdatedby(Integer updatedby) {
-        this.updatedby = updatedby;
+    public void setDiscountpr(Integer discountpr) {
+        this.discountpr = discountpr;
     }
 
-    public Date getUpdatedat() {
-        return updatedat;
+    public Float getDiscountvalue() {
+        return discountvalue;
     }
 
-    public void setUpdatedat(Date updatedat) {
-        this.updatedat = updatedat;
+    public void setDiscountvalue(Float discountvalue) {
+        this.discountvalue = discountvalue;
     }
 
-    public Boolean getDeleted() {
-        return deleted;
+    public Float getTotal() {
+        return total;
     }
 
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
+    public void setTotal(Float total) {
+        this.total = total;
     }
 
-    public Integer getDeletedby() {
-        return deletedby;
+    public Invoice getInvoiceid() {
+        return invoiceid;
     }
 
-    public void setDeletedby(Integer deletedby) {
-        this.deletedby = deletedby;
-    }
-
-    public Store getStoreid() {
-        return storeid;
-    }
-
-    public void setStoreid(Store storeid) {
-        this.storeid = storeid;
+    public void setInvoiceid(Invoice invoiceid) {
+        this.invoiceid = invoiceid;
     }
 
     public Item getItemid() {
@@ -138,14 +121,6 @@ public class StoreItem implements Serializable {
 
     public void setItemid(Item itemid) {
         this.itemid = itemid;
-    }
-
-    public User getCreatedby() {
-        return createdby;
-    }
-
-    public void setCreatedby(User createdby) {
-        this.createdby = createdby;
     }
 
     @Override
@@ -158,10 +133,10 @@ public class StoreItem implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof StoreItem)) {
+        if (!(object instanceof InvoiceItem)) {
             return false;
         }
-        StoreItem other = (StoreItem) object;
+        InvoiceItem other = (InvoiceItem) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -170,7 +145,7 @@ public class StoreItem implements Serializable {
 
     @Override
     public String toString() {
-        return "com.agile.ims.entity.StoreItem[ id=" + id + " ]";
+        return "com.agile.ims.entity.InvoiceItem[ id=" + id + " ]";
     }
     
 }

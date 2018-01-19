@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,67 +23,64 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Muhammad
+ * @author ramy
  */
 @Entity
-@Table(catalog = "inventory", schema = "")
-@XmlRootElement
+@Table(name = "account")
 @NamedQueries({
-    @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
-    , @NamedQuery(name = "Account.findById", query = "SELECT a FROM Account a WHERE a.id = :id")
-    , @NamedQuery(name = "Account.findByName", query = "SELECT a FROM Account a WHERE a.name = :name")
-    , @NamedQuery(name = "Account.findByPhone", query = "SELECT a FROM Account a WHERE a.phone = :phone")
-    , @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Account a WHERE a.email = :email")
-    , @NamedQuery(name = "Account.findByAddress", query = "SELECT a FROM Account a WHERE a.address = :address")
-    , @NamedQuery(name = "Account.findByCode", query = "SELECT a FROM Account a WHERE a.code = :code")
-    , @NamedQuery(name = "Account.findByExtrainfo", query = "SELECT a FROM Account a WHERE a.extrainfo = :extrainfo")
-    , @NamedQuery(name = "Account.findByCreatedat", query = "SELECT a FROM Account a WHERE a.createdat = :createdat")
-    , @NamedQuery(name = "Account.findByUpdatedby", query = "SELECT a FROM Account a WHERE a.updatedby = :updatedby")
-    , @NamedQuery(name = "Account.findByUpdatedat", query = "SELECT a FROM Account a WHERE a.updatedat = :updatedat")
-    , @NamedQuery(name = "Account.findByDeleted", query = "SELECT a FROM Account a WHERE a.deleted = :deleted")
-    , @NamedQuery(name = "Account.findByDeletedby", query = "SELECT a FROM Account a WHERE a.deletedby = :deletedby")})
+    @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")})
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
     @Size(max = 255)
+    @Column(name = "name")
     private String name;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 255)
+    @Column(name = "phone")
     private String phone;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 255)
+    @Column(name = "email")
     private String email;
     @Size(max = 255)
+    @Column(name = "address")
     private String address;
     @Size(max = 255)
+    @Column(name = "code")
     private String code;
     @Size(max = 255)
+    @Column(name = "extrainfo")
     private String extrainfo;
+    @Column(name = "createdat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdat;
+    @Column(name = "updatedby")
     private Integer updatedby;
+    @Column(name = "updatedat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
+    @Column(name = "deleted")
     private Boolean deleted;
+    @Column(name = "deletedby")
     private Integer deletedby;
-    @OneToMany(mappedBy = "accountid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "accountid")
     private Collection<Invoice> invoiceCollection;
     @JoinColumn(name = "typeid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Lookup typeid;
     @JoinColumn(name = "createdby", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private User createdby;
-    @OneToMany(mappedBy = "accountid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "accountid")
     private Collection<Transaction> transactionCollection;
 
     public Account() {
@@ -189,7 +186,6 @@ public class Account implements Serializable {
         this.deletedby = deletedby;
     }
 
-    @XmlTransient
     public Collection<Invoice> getInvoiceCollection() {
         return invoiceCollection;
     }
@@ -214,7 +210,6 @@ public class Account implements Serializable {
         this.createdby = createdby;
     }
 
-    @XmlTransient
     public Collection<Transaction> getTransactionCollection() {
         return transactionCollection;
     }
@@ -247,5 +242,5 @@ public class Account implements Serializable {
     public String toString() {
         return "com.agile.ims.entity.Account[ id=" + id + " ]";
     }
-
+    
 }
