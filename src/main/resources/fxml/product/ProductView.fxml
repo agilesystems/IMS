@@ -175,11 +175,28 @@
                                                       <Image url="@../../imgs/ic_add_black_24dp_1x.png" />
                                                    </image>
                                                 </ImageView>
-                                             </graphic></JFXButton>
+                                             </graphic>
+                                                        </JFXButton>
                                           <Separator prefWidth="200.0" />
-                                                        <JFXButton fx:id="editBtn" minHeight="32.0" minWidth="100.0" onAction="#editProduct" prefHeight="32.0" prefWidth="100.0" styleClass="orang-btn" text="تعديل" />
+                                                        <JFXButton fx:id="editBtn" minHeight="32.0" minWidth="100.0" onAction="#editProduct" prefHeight="32.0" prefWidth="100.0" styleClass="orang-btn" text="تعديل">
+                                                             <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../imgs/ic_mode_edit_black_24dp_1x.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                                        </JFXButton>
                                           <Separator prefWidth="200.0" />
-                                                        <JFXButton fx:id="deleteBtn" minHeight="32.0" minWidth="100.0" onAction="#deleteProduct" prefHeight="32.0" prefWidth="100.0" styleClass="red-btn" text="حذف" />
+                                          <JFXButton fx:id="deleteBtn" minHeight="32.0" minWidth="100.0" onAction="#deleteProduct" prefHeight="32.0" prefWidth="100.0" styleClass="red-btn" text="حذف">
+                                               <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../imgs/ic_delete_black_24dp_1x.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
                                     
                                                     </children>
                                                 </VBox>

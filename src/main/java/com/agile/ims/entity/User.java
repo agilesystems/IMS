@@ -5,6 +5,7 @@
  */
 package com.agile.ims.entity;
 
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -17,31 +18,29 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ramy
+ * @author Muhammad
  */
 @Entity
-@Table(name = "user")
+@Table(catalog = "inventory", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
     , @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
-    , @NamedQuery(name = "User.findByAddress", query = "SELECT u FROM User u WHERE u.address = :address")
-    , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
-    , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
+    , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
-    , @NamedQuery(name = "User.findByPhone", query = "SELECT u FROM User u WHERE u.phone = :phone")
-    , @NamedQuery(name = "User.findByType", query = "SELECT u FROM User u WHERE u.type = :type")
-    , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")})
+    , @NamedQuery(name = "User.findByEmployeeid", query = "SELECT u FROM User u WHERE u.employeeid = :employeeid")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
@@ -62,6 +61,21 @@ public class User implements Serializable {
     private String username;
     @ManyToMany(mappedBy = "userCollection", fetch = FetchType.EAGER)
     private Collection<UserMenu> userMenuCollection;
+    private Integer employeeid;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<Item> itemCollection;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<Transfer> transferCollection;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<Invoice> invoiceCollection;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<Store> storeCollection;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<Account> accountCollection;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<Transaction> transactionCollection;
+    @OneToMany(mappedBy = "createdby", fetch = FetchType.EAGER)
+    private Collection<StoreItem> storeItemCollection;
 
     public User() {
     }
@@ -78,54 +92,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -134,13 +100,84 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    @XmlTransient
-    public Collection<UserMenu> getUserMenuCollection() {
-        return userMenuCollection;
+    
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserMenuCollection(Collection<UserMenu> userMenuCollection) {
-        this.userMenuCollection = userMenuCollection;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getEmployeeid() {
+        return employeeid;
+    }
+
+    public void setEmployeeid(Integer employeeid) {
+        this.employeeid = employeeid;
+    }
+
+    @XmlTransient
+    public Collection<Item> getItemCollection() {
+        return itemCollection;
+    }
+
+    public void setItemCollection(Collection<Item> itemCollection) {
+        this.itemCollection = itemCollection;
+    }
+
+    @XmlTransient
+    public Collection<Transfer> getTransferCollection() {
+        return transferCollection;
+    }
+
+    public void setTransferCollection(Collection<Transfer> transferCollection) {
+        this.transferCollection = transferCollection;
+    }
+
+    @XmlTransient
+    public Collection<Invoice> getInvoiceCollection() {
+        return invoiceCollection;
+    }
+
+    public void setInvoiceCollection(Collection<Invoice> invoiceCollection) {
+        this.invoiceCollection = invoiceCollection;
+    }
+
+    @XmlTransient
+    public Collection<Store> getStoreCollection() {
+        return storeCollection;
+    }
+
+    public void setStoreCollection(Collection<Store> storeCollection) {
+        this.storeCollection = storeCollection;
+    }
+
+    @XmlTransient
+    public Collection<Account> getAccountCollection() {
+        return accountCollection;
+    }
+
+    public void setAccountCollection(Collection<Account> accountCollection) {
+        this.accountCollection = accountCollection;
+    }
+
+    @XmlTransient
+    public Collection<Transaction> getTransactionCollection() {
+        return transactionCollection;
+    }
+
+    public void setTransactionCollection(Collection<Transaction> transactionCollection) {
+        this.transactionCollection = transactionCollection;
+    }
+
+    @XmlTransient
+    public Collection<StoreItem> getStoreItemCollection() {
+        return storeItemCollection;
+    }
+
+    public void setStoreItemCollection(Collection<StoreItem> storeItemCollection) {
+        this.storeItemCollection = storeItemCollection;
     }
 
     @Override
@@ -167,5 +204,53 @@ public class User implements Serializable {
     public String toString() {
         return "com.agile.ims.entity.User[ id=" + id + " ]";
     }
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Collection<UserMenu> getUserMenuCollection() {
+        return userMenuCollection;
+    }
+
+    public void setUserMenuCollection(Collection<UserMenu> userMenuCollection) {
+        this.userMenuCollection = userMenuCollection;
+    }
+
 }
