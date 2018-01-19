@@ -17,7 +17,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class IMS extends Application {
-
+//xxx
     public static User user;
     public static ConfigurableApplicationContext context;
     private Parent root;
