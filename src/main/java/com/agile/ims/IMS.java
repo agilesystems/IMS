@@ -42,7 +42,6 @@ public class IMS extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.LOGINVIEW));
         loader.setControllerFactory(context::getBean);
         root = loader.load();
-
         JFXDecorator decorator = new JFXDecorator(stage, root, false, false, true);
         decorator.setCustomMaximize(false);
         decorator.setBorder(Border.EMPTY);
