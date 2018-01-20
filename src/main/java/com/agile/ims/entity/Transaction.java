@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,59 +21,56 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Muhammad
+ * @author ramy
  */
 @Entity
-@Table(catalog = "inventory", schema = "")
-@XmlRootElement
+@Table(name = "transaction")
 @NamedQueries({
-    @NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t")
-    , @NamedQuery(name = "Transaction.findById", query = "SELECT t FROM Transaction t WHERE t.id = :id")
-    , @NamedQuery(name = "Transaction.findByInvoiceid", query = "SELECT t FROM Transaction t WHERE t.invoiceid = :invoiceid")
-    , @NamedQuery(name = "Transaction.findByTransactiondate", query = "SELECT t FROM Transaction t WHERE t.transactiondate = :transactiondate")
-    , @NamedQuery(name = "Transaction.findByValue", query = "SELECT t FROM Transaction t WHERE t.value = :value")
-    , @NamedQuery(name = "Transaction.findByValuetype", query = "SELECT t FROM Transaction t WHERE t.valuetype = :valuetype")
-    , @NamedQuery(name = "Transaction.findByNote", query = "SELECT t FROM Transaction t WHERE t.note = :note")
-    , @NamedQuery(name = "Transaction.findByCreatedat", query = "SELECT t FROM Transaction t WHERE t.createdat = :createdat")
-    , @NamedQuery(name = "Transaction.findByUpdatedby", query = "SELECT t FROM Transaction t WHERE t.updatedby = :updatedby")
-    , @NamedQuery(name = "Transaction.findByUpdatedat", query = "SELECT t FROM Transaction t WHERE t.updatedat = :updatedat")
-    , @NamedQuery(name = "Transaction.findByDeleted", query = "SELECT t FROM Transaction t WHERE t.deleted = :deleted")
-    , @NamedQuery(name = "Transaction.findByDeletedby", query = "SELECT t FROM Transaction t WHERE t.deletedby = :deletedby")})
+    @NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t")})
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "invoiceid")
     private Integer invoiceid;
+    @Column(name = "transactiondate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date transactiondate;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "value")
     private Float value;
+    @Column(name = "valuetype")
     private Integer valuetype;
     @Size(max = 255)
     @Column(name = " note")
     private String note;
+    @Column(name = "createdat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdat;
+    @Column(name = "updatedby")
     private Integer updatedby;
+    @Column(name = "updatedat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
+    @Column(name = "deleted")
     private Boolean deleted;
+    @Column(name = "deletedby")
     private Integer deletedby;
     @JoinColumn(name = "typeid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Lookup typeid;
     @JoinColumn(name = "accountid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Account accountid;
     @JoinColumn(name = "createdby", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private User createdby;
 
     public Transaction() {
@@ -220,5 +216,5 @@ public class Transaction implements Serializable {
     public String toString() {
         return "com.agile.ims.entity.Transaction[ id=" + id + " ]";
     }
-
+    
 }

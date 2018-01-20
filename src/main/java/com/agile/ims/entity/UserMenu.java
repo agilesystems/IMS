@@ -10,7 +10,6 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -31,14 +30,8 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "menu")
-@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "UserMenu.findAll", query = "SELECT u FROM UserMenu u")
-    , @NamedQuery(name = "UserMenu.findById", query = "SELECT u FROM UserMenu u WHERE u.id = :id")
-    , @NamedQuery(name = "UserMenu.findByTitle", query = "SELECT u FROM UserMenu u WHERE u.title = :title")
-    , @NamedQuery(name = "UserMenu.findByVeiwOrder", query = "SELECT u FROM UserMenu u WHERE u.veiwOrder = :veiwOrder")
-    , @NamedQuery(name = "UserMenu.findByFxml", query = "SELECT u FROM UserMenu u WHERE u.fxml = :fxml")
-    , @NamedQuery(name = "UserMenu.findByIcon", query = "SELECT u FROM UserMenu u WHERE u.icon = :icon")})
+    @NamedQuery(name = "UserMenu.findAll", query = "SELECT m FROM UserMenu m")})
 public class UserMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,23 +41,27 @@ public class UserMenu implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "title")
     private String title;
     @Column(name = "veiw_order")
     private Integer veiwOrder;
+    @Size(max = 45)
     @Column(name = "fxml")
     private String fxml;
+    @Size(max = 45)
     @Column(name = "icon")
     private String icon;
     @JoinTable(name = "user_menu", joinColumns = {
         @JoinColumn(name = "menu", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "user", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<User> userCollection;
-    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
-    private Collection<UserMenu> userMenuCollection;
+    @OneToMany(mappedBy = "parent")
+    private Collection<UserMenu> menuCollection;
     @JoinColumn(name = "parent", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private UserMenu parent;
 
     public UserMenu() {
@@ -119,7 +116,6 @@ public class UserMenu implements Serializable {
         this.icon = icon;
     }
 
-    @XmlTransient
     public Collection<User> getUserCollection() {
         return userCollection;
     }
@@ -128,13 +124,12 @@ public class UserMenu implements Serializable {
         this.userCollection = userCollection;
     }
 
-    @XmlTransient
-    public Collection<UserMenu> getUserMenuCollection() {
-        return userMenuCollection;
+    public Collection<UserMenu> getMenuCollection() {
+        return menuCollection;
     }
 
-    public void setUserMenuCollection(Collection<UserMenu> userMenuCollection) {
-        this.userMenuCollection = userMenuCollection;
+    public void setMenuCollection(Collection<UserMenu> menuCollection) {
+        this.menuCollection = menuCollection;
     }
 
     public UserMenu getParent() {
@@ -167,7 +162,7 @@ public class UserMenu implements Serializable {
 
     @Override
     public String toString() {
-        return "com.agile.ims.entity.UserMenu[ id=" + id + " ]";
+        return "com.agile.ims.entity.Menu[ id=" + id + " ]";
     }
     
 }

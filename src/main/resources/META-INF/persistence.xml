@@ -4,6 +4,16 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.agile.ims.entity.UserMenu</class>
     <class>com.agile.ims.entity.User</class>
+    <class>com.agile.ims.entity.Lookup</class>
+    <class>com.agile.ims.entity.Store</class>
+    <class>com.agile.ims.entity.Invoice</class>
+    <class>com.agile.ims.entity.Item</class>
+    <class>com.agile.ims.entity.Account</class>
+    <class>com.agile.ims.entity.InvoiceItem</class>
+    <class>com.agile.ims.entity.StoreItem</class>
+    <class>com.agile.ims.entity.Transfer</class>
+    <class>com.agile.ims.entity.TransferItem</class>
+    <class>com.agile.ims.entity.Transaction</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/inventory?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

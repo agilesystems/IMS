@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,52 +22,49 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Muhammad
+ * @author ramy
  */
 @Entity
-@Table(catalog = "inventory", schema = "")
-@XmlRootElement
+@Table(name = "transfer")
 @NamedQueries({
-    @NamedQuery(name = "Transfer.findAll", query = "SELECT t FROM Transfer t")
-    , @NamedQuery(name = "Transfer.findById", query = "SELECT t FROM Transfer t WHERE t.id = :id")
-    , @NamedQuery(name = "Transfer.findByTransferdate", query = "SELECT t FROM Transfer t WHERE t.transferdate = :transferdate")
-    , @NamedQuery(name = "Transfer.findByCreatedat", query = "SELECT t FROM Transfer t WHERE t.createdat = :createdat")
-    , @NamedQuery(name = "Transfer.findByUpdatedby", query = "SELECT t FROM Transfer t WHERE t.updatedby = :updatedby")
-    , @NamedQuery(name = "Transfer.findByUpdatedat", query = "SELECT t FROM Transfer t WHERE t.updatedat = :updatedat")
-    , @NamedQuery(name = "Transfer.findByDeleted", query = "SELECT t FROM Transfer t WHERE t.deleted = :deleted")
-    , @NamedQuery(name = "Transfer.findByDeletedby", query = "SELECT t FROM Transfer t WHERE t.deletedby = :deletedby")})
+    @NamedQuery(name = "Transfer.findAll", query = "SELECT t FROM Transfer t")})
 public class Transfer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "transferdate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date transferdate;
+    @Column(name = "createdat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdat;
+    @Column(name = "updatedby")
     private Integer updatedby;
+    @Column(name = "updatedat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedat;
+    @Column(name = "deleted")
     private Boolean deleted;
+    @Column(name = "deletedby")
     private Integer deletedby;
     @JoinColumn(name = "storeidfrom", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Store storeidfrom;
     @JoinColumn(name = "storeidto", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Store storeidto;
     @JoinColumn(name = "createdby", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private User createdby;
-    @OneToMany(mappedBy = "transferid", fetch = FetchType.EAGER)
-    private Collection<Transferitem> transferitemCollection;
+    @OneToMany(mappedBy = "transferid")
+    private Collection<TransferItem> transferItemCollection;
 
     public Transfer() {
     }
@@ -156,13 +153,12 @@ public class Transfer implements Serializable {
         this.createdby = createdby;
     }
 
-    @XmlTransient
-    public Collection<Transferitem> getTransferitemCollection() {
-        return transferitemCollection;
+    public Collection<TransferItem> getTransferItemCollection() {
+        return transferItemCollection;
     }
 
-    public void setTransferitemCollection(Collection<Transferitem> transferitemCollection) {
-        this.transferitemCollection = transferitemCollection;
+    public void setTransferItemCollection(Collection<TransferItem> transferItemCollection) {
+        this.transferItemCollection = transferItemCollection;
     }
 
     @Override
@@ -189,5 +185,5 @@ public class Transfer implements Serializable {
     public String toString() {
         return "com.agile.ims.entity.Transfer[ id=" + id + " ]";
     }
-
+    
 }

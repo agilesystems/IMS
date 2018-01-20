@@ -5,124 +5,92 @@
  */
 package com.agile.ims.controller;
 
-import com.agile.ims.entity.Product;
-import com.agile.ims.helper.Helper;
-import com.jfoenix.controls.JFXButton;
-import java.awt.Dialog;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TableView.TableViewSelectionModel;
-import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
+import javafx.scene.control.ToggleButton;
 
 /**
- * FXML Controller class
  *
- * @author ramy
+ * @author mhdsy
  */
-public class ProductController implements Initializable {
+public class ProductController {
 
     @FXML
-    private TableView<Product> productsTable;
+    private ToggleButton btnStock;
     @FXML
-    private TextField searchTextFiled;
-    ObservableList<Product> pList;
+    private ToggleButton btnSupplyer;
     @FXML
-    private JFXButton addBtn;
+    private ToggleButton btnBrands;
     @FXML
-    private JFXButton editBtn;
+    private ToggleButton btnCatagory;
     @FXML
-    private JFXButton deleteBtn;
+    private TableView<?> tableView;
+    @FXML
+    private TableColumn<?, ?> idCol;
+    @FXML
+    private TableColumn<?, ?> nameCol;
+    @FXML
+    private TableColumn<?, ?> unitIdCol;
+    @FXML
+    private TableColumn<?, ?> groupIdCol;
+    @FXML
+    private TableColumn<?, ?> buyPriceCol;
+    @FXML
+    private TableColumn<?, ?> sellPriceCol;
+    @FXML
+    private TableColumn<?, ?> barcodeCol;
+    @FXML
+    private TableColumn<?, ?> globalCodeCol;
+    @FXML
+    private TableColumn<?, ?> localCodeCol;
+    @FXML
+    private TableColumn<?, ?> lowestPriceCol;
+    @FXML
+    private TableColumn<?, ?> lowestQuantityCol;
+    @FXML
+    private TableColumn<?, ?> expireDateCol;
+    @FXML
+    private TableColumn<?, ?> expiredCol;
+    @FXML
+    private TableColumn<?, ?> extraInfoCol;
+    @FXML
+    private TableColumn<?, ?> photoCol;
+    @FXML
+    private TableColumn<?, ?> createdByCol;
+    @FXML
+    private TableColumn<?, ?> createdAtCol;
+    @FXML
+    private TableColumn<?, ?> updatedByCol;
+    @FXML
+    private TableColumn<?, ?> updatedAtCol;
+    @FXML
+    private TableColumn<?, ?> deletedCol;
+    @FXML
+    private TableColumn<?, ?> deletedByCol;
+    @FXML
+    private Button deleteBtn;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        pList = FXCollections.observableArrayList(
-                new Product(1, "p1", 12),
-                new Product(2, "p2", 12),
-                new Product(3, "p3", 12),
-                new Product(4, "p4", 12),
-                new Product(5, "p5", 12),
-                new Product(6, "p6", 12),
-                new Product(1, "p1", 12),
-                new Product(2, "p2", 12),
-                new Product(3, "p3", 12),
-                new Product(4, "p4", 12),
-                new Product(5, "p5", 12),
-                new Product(6, "p6", 12),
-                new Product(1, "p1", 12),
-                new Product(2, "p2", 12),
-                new Product(3, "p3", 12),
-                new Product(4, "p4", 12),
-                new Product(5, "p5", 12),
-                new Product(6, "p6", 12),
-                new Product(1, "p1", 12),
-                new Product(2, "p2", 12),
-                new Product(3, "p3", 12),
-                new Product(4, "p4", 12),
-                new Product(5, "p5", 12),
-                new Product(6, "p6", 12),
-                new Product(1, "p1", 12),
-                new Product(2, "p2", 12),
-                new Product(3, "p3", 12),
-                new Product(4, "p4", 12),
-                new Product(5, "p5", 12),
-                new Product(6, "p6", 12),
-                new Product(1, "p1", 12),
-                new Product(2, "p2", 12),
-                new Product(3, "p3", 12),
-                new Product(4, "p4", 12),
-                new Product(5, "p5", 12),
-                new Product(6, "p6", 12)
-        );
-        Helper.setTableColumns(pList, productsTable);
-        searchTextFiled.textProperty().addListener(v -> {
-            Helper.setTableColumns(find(searchTextFiled.getText()), productsTable);
-        });
-        productsTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                if (productsTable.getSelectionModel().getSelectedItem() != null) {
-                    Product p = productsTable.getSelectionModel().getSelectedItem();
-                    new Alert(Alert.AlertType.CONFIRMATION, p.getName()).show();
-
-                    System.out.println("Selected Value" + p.getName());
-                }
-            }
-        });
-
+    @FXML
+    private void btnStockOnAction(ActionEvent event) {
     }
 
-    private ObservableList<Product> find(String value) {
+    @FXML
+    private void btnSupplyerOnAction(ActionEvent event) {
+    }
 
-        ObservableList<Product> list = FXCollections.observableArrayList();
-        pList.stream().filter((p) -> (p.getName().startsWith(value) || String.valueOf(p.getId()).startsWith(value))).forEachOrdered((p) -> {
-            list.add(p);
-        });
-        return list;
+    @FXML
+    private void btnBrandsOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnCatagoryOnAction(ActionEvent event) {
     }
 
     @FXML
     private void addProduct(ActionEvent event) {
     }
-
-    @FXML
-    private void editProduct(ActionEvent event) {
-    }
-
-    @FXML
-    private void deleteProduct(ActionEvent event) {
-    }
-
+    
 }

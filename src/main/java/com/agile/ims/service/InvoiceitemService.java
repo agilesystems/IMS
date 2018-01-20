@@ -5,7 +5,7 @@
  */
 package com.agile.ims.service;
 
-import com.agile.ims.entity.Invoiceitem;
+import com.agile.ims.entity.InvoiceItem;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,7 +22,7 @@ public interface InvoiceitemService {
      * @param invoiceItem to get the data to save in item invoice table
      * @return true if the row added Or False if row not added
      */
-    boolean save(Invoiceitem invoiceItem);
+    boolean save(InvoiceItem invoiceItem);
 
     /**
      * This method for soft deleted the invoice items , just update the deleted
@@ -31,7 +31,7 @@ public interface InvoiceitemService {
      * @param invoiceitem 
      * @return true if the update successfully Or false if not updated
      */
-    boolean delete(Invoiceitem invoiceitem);
+    boolean delete(InvoiceItem invoiceitem);
 
     /**
      * this method to calculate the total of invoice item (quantity * price )
@@ -39,7 +39,7 @@ public interface InvoiceitemService {
      * @param invoiceitem to get the invoice item to calculate the total of
      * invoice item
      */
-    void itemtotal(Invoiceitem invoiceitem);
+    void itemtotal(InvoiceItem invoiceitem);
 
     /**
      * this method to calculate the discount per item in invoice item
@@ -47,7 +47,7 @@ public interface InvoiceitemService {
      * @param invoiceitem an object parameter to get the invoice item data to
      * calculate the total per item
      */
-    void itemdiscount(Invoiceitem invoiceitem);
+    void itemdiscount(InvoiceItem invoiceitem);
 
     /**
      * this method to calculate the net value of item after the calculate the
@@ -56,5 +56,5 @@ public interface InvoiceitemService {
      * @param invoiceitem An object parameter to get the data o item to
      * calculate the net value
      */
-    void itemnetvalue(Invoiceitem invoiceitem);
+    void itemnetvalue(InvoiceItem invoiceitem);
 }

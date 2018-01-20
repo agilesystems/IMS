@@ -8,8 +8,8 @@ package com.agile.ims.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,42 +18,39 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Muhammad
+ * @author ramy
  */
 @Entity
-@Table(catalog = "inventory", schema = "")
-@XmlRootElement
+@Table(name = "lookup")
 @NamedQueries({
-    @NamedQuery(name = "Lookup.findAll", query = "SELECT l FROM Lookup l")
-    , @NamedQuery(name = "Lookup.findById", query = "SELECT l FROM Lookup l WHERE l.id = :id")
-    , @NamedQuery(name = "Lookup.findByParent", query = "SELECT l FROM Lookup l WHERE l.parent = :parent")
-    , @NamedQuery(name = "Lookup.findByName", query = "SELECT l FROM Lookup l WHERE l.name = :name")})
+    @NamedQuery(name = "Lookup.findAll", query = "SELECT l FROM Lookup l")})
 public class Lookup implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "parent")
     private Integer parent;
     @Size(max = 255)
+    @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "unitid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "unitid")
     private Collection<Item> itemCollection;
-    @OneToMany(mappedBy = "groupid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "groupid")
     private Collection<Item> itemCollection1;
-    @OneToMany(mappedBy = "typeid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "typeid")
     private Collection<Invoice> invoiceCollection;
-    @OneToMany(mappedBy = "cachtype", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cachtype")
     private Collection<Invoice> invoiceCollection1;
-    @OneToMany(mappedBy = "typeid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "typeid")
     private Collection<Account> accountCollection;
-    @OneToMany(mappedBy = "typeid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "typeid")
     private Collection<Transaction> transactionCollection;
 
     public Lookup() {
@@ -87,7 +84,6 @@ public class Lookup implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
     public Collection<Item> getItemCollection() {
         return itemCollection;
     }
@@ -96,7 +92,6 @@ public class Lookup implements Serializable {
         this.itemCollection = itemCollection;
     }
 
-    @XmlTransient
     public Collection<Item> getItemCollection1() {
         return itemCollection1;
     }
@@ -105,7 +100,6 @@ public class Lookup implements Serializable {
         this.itemCollection1 = itemCollection1;
     }
 
-    @XmlTransient
     public Collection<Invoice> getInvoiceCollection() {
         return invoiceCollection;
     }
@@ -114,7 +108,6 @@ public class Lookup implements Serializable {
         this.invoiceCollection = invoiceCollection;
     }
 
-    @XmlTransient
     public Collection<Invoice> getInvoiceCollection1() {
         return invoiceCollection1;
     }
@@ -123,7 +116,6 @@ public class Lookup implements Serializable {
         this.invoiceCollection1 = invoiceCollection1;
     }
 
-    @XmlTransient
     public Collection<Account> getAccountCollection() {
         return accountCollection;
     }
@@ -132,7 +124,6 @@ public class Lookup implements Serializable {
         this.accountCollection = accountCollection;
     }
 
-    @XmlTransient
     public Collection<Transaction> getTransactionCollection() {
         return transactionCollection;
     }
@@ -165,5 +156,5 @@ public class Lookup implements Serializable {
     public String toString() {
         return "com.agile.ims.entity.Lookup[ id=" + id + " ]";
     }
-
+    
 }

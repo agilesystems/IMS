@@ -6,7 +6,7 @@
 package com.agile.ims.service;
 
 import com.agile.ims.entity.Invoice;
-import com.agile.ims.entity.Invoiceitem;
+import com.agile.ims.entity.InvoiceItem;
 import com.agile.ims.entity.Item;
 import com.agile.ims.entity.Store;
 import java.util.Collection;
@@ -85,7 +85,7 @@ public interface InvoiceService {
      * @param invoiceitem an Argument to get the invoice total from invoice
      * items (quantity * price) to all items and update the field of total
      */
-    void invoicetotal(Invoiceitem invoiceitem);
+    void invoicetotal(InvoiceItem invoiceitem);
 
     /**
      * Calculate the discount of invoice to the customer

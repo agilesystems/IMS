@@ -5,7 +5,7 @@
  */
 package com.agile.ims.repository;
 
-import com.agile.ims.entity.Transferitem;
+import com.agile.ims.entity.TransferItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Muhammad
  */
 @Repository
-public interface TransferitemRepository extends JpaRepository<Transferitem, Integer> {
+public interface TransferitemRepository extends JpaRepository<TransferItem, Integer> {
 
 }
