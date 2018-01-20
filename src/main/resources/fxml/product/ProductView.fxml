@@ -20,9 +20,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="694.0" prefWidth="1200.0" stylesheets="@../../styles/products.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.ProductController">
+<AnchorPane id="AnchorPane" maxHeight="684.0" maxWidth="1105.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="660.0" prefWidth="1105.0" stylesheets="@../../styles/products.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.ProductController">
    <children>
-      <BorderPane layoutX="253.0" layoutY="132.0" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../run/media/mhdsy/E/workspace/NetBeans/x-system/src/products/products.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="253.0" layoutY="132.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <GridPane maxHeight="-Infinity" maxWidth="900.0" prefHeight="391.0" prefWidth="964.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -133,7 +133,7 @@
                               </JFXComboBox>
                            </children>
                         </HBox>
-                        <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="446.0" promptText="Start typing to search" GridPane.columnIndex="1" GridPane.columnSpan="9">
+                        <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="446.0" promptText="Start typing to search" GridPane.columnIndex="1" GridPane.columnSpan="9">
                            <font>
                               <Font name="System Italic" size="15.0" />
                            </font></JFXTextField>
@@ -169,6 +169,9 @@
                            </padding>
                         </HBox>
                      </children>
+                     <HBox.margin>
+                        <Insets top="-6.0" />
+                     </HBox.margin>
                   </GridPane>
                </children>
             </HBox>
@@ -186,7 +189,8 @@
                      <children>
                         <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="115.0" prefWidth="278.0">
                            <columnConstraints>
-                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="115.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="130.0" minWidth="6.0" prefWidth="6.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="147.0" />
                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="120.0" />
                            </columnConstraints>
                            <rowConstraints>
@@ -194,7 +198,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#addProduct" prefHeight="40.0" prefWidth="252.0" text="Add New Product" GridPane.columnSpan="2">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#addProduct" prefHeight="40.0" prefWidth="252.0" text="Add New Product" GridPane.columnIndex="1" GridPane.columnSpan="2">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -202,7 +206,7 @@
                                     <MaterialDesignIconView glyphName="LIBRARY_PLUS" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </Button>
-                              <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="112.0" text="Update" GridPane.rowIndex="1">
+                              <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="112.0" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -210,7 +214,7 @@
                                     <MaterialDesignIconView glyphName="PENCIL" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="deleteBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="114.0" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Button fx:id="deleteBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="114.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -285,7 +289,7 @@
                   </HBox>
                </children>
                <BorderPane.margin>
-                  <Insets right="-20.0" />
+                  <Insets right="-30.0" />
                </BorderPane.margin>
             </VBox>
          </right>
