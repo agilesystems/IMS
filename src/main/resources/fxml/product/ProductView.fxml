@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -20,39 +21,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="705.0" prefWidth="1100.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="homAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1216.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane layoutX="10.0" layoutY="10.0" prefHeight="680.0" prefWidth="1100.0">
+      <StackPane layoutX="10.0" layoutY="10.0" prefHeight="705.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+            <AnchorPane fx:id="secondAnchorPane" prefHeight="705.0" prefWidth="1216.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <TableView layoutX="24.0" layoutY="173.0" prefHeight="490.0" prefWidth="706.0">
+                  <TableView fx:id="tableView" layoutX="26.0" layoutY="124.0" prefHeight="490.0" prefWidth="706.0" style="-fx-background-color: #F2F2F2;">
                      <columns>
                         <TableColumn prefWidth="24.0" />
                         <TableColumn prefWidth="119.0" text="ID" />
                         <TableColumn prefWidth="311.0" text="PRODUCT NAMES" />
                         <TableColumn prefWidth="326.0" text="PRODUCT PRICE" />
                      </columns>
+                     <styleClass>
+                        <String fx:value="table-column" />
+                        <String fx:value="table-cell" />
+                        <String fx:value="table-column" />
+                        <String fx:value="card-unpadded" />
+                     </styleClass>
                   </TableView>
-                  <AnchorPane layoutX="751.0" layoutY="135.0" prefHeight="550.0" prefWidth="320.0" styleClass="card-white">
+                  <AnchorPane layoutX="749.0" layoutY="9.0" prefHeight="490.0" prefWidth="450.0" styleClass="card-white">
                      <children>
                         <StackPane layoutX="47.0" layoutY="39.0" prefHeight="611.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox prefHeight="150.0" prefWidth="320.0" styleClass="card-white">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Pane prefHeight="62.0" prefWidth="320.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4; -fx-background-color: #9951AB;">
+                                    <AnchorPane layoutX="256.0" layoutY="38.0" prefHeight="53.0" prefWidth="51.0" style="-fx-background-color: #212733;" styleClass="fab">
                                        <children>
-                                          <Label alignment="CENTER" prefHeight="62.0" prefWidth="320.0" style="-fx-text-fill: black;" text="Product Information" textFill="#eeecec">
+                                          <Label prefHeight="50.0" prefWidth="50.0">
+                                             <padding>
+                                                <Insets right="5.0" top="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <MaterialDesignIconView fill="WHITE" glyphName="BORDER_COLOR" layoutX="11.0" layoutY="40.0" size="26" wrappingWidth="22.666656494140625" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <VBox prefHeight="150.0" prefWidth="320.0" styleClass="card-unpadded">
+                                 <children>
+                                    <Pane prefHeight="62.0" prefWidth="320.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4; -fx-background-color: #E7414D;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="65.0" layoutY="-1.0" prefHeight="62.0" prefWidth="320.0" style="-fx-text-fill: #FFFFFF;" text="Product Information" textFill="#eeecec">
                                              <font>
-                                                <Font name="Roboto Black" size="15.0" />
+                                                <Font size="28.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </Pane>
                                     <AnchorPane prefHeight="432.0" prefWidth="320.0">
                                        <children>
-                                          <Separator layoutX="24.0" layoutY="125.0" prefHeight="0.0" prefWidth="290.0" />
-                                          <Separator layoutX="24.0" layoutY="243.0" prefHeight="0.0" prefWidth="290.0" />
+                                          <Separator layoutX="24.0" layoutY="125.0" prefHeight="0.0" prefWidth="350.0" />
+                                          <Separator layoutX="24.0" layoutY="243.0" prefHeight="0.0" prefWidth="350.0" />
                                           <VBox layoutX="50.0" layoutY="37.0" prefHeight="85.0" prefWidth="221.0">
                                              <children>
                                                 <Label prefHeight="30.0" prefWidth="221.0" text="Prduct Name:" textFill="#797878">
@@ -72,11 +93,6 @@
                                                 </Label>
                                              </children>
                                           </VBox>
-                                          <Label layoutX="80.0" layoutY="293.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
                                           <VBox layoutX="50.0" layoutY="138.0" prefHeight="90.0" prefWidth="221.0">
                                              <children>
                                                 <Label prefHeight="30.0" prefWidth="214.0" text="Some Text" textFill="#797878">
@@ -96,60 +112,51 @@
                                                 </Label>
                                              </children>
                                           </VBox>
-                                          <Label alignment="CENTER_RIGHT" layoutX="236.0" layoutY="293.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
+                                          <Label layoutX="48.0" layoutY="284.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
                                              <font>
                                                 <Font name="Roboto Black" size="12.0" />
                                              </font>
                                           </Label>
-                                          <Separator layoutX="77.0" layoutY="316.0" prefHeight="2.0" prefWidth="233.0" />
-                                          <Label layoutX="80.0" layoutY="326.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
+                                          <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="284.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
                                              <font>
                                                 <Font name="Roboto Black" size="12.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="236.0" layoutY="326.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
+                                          <Separator layoutX="45.0" layoutY="307.0" prefHeight="3.0" prefWidth="330.0" />
+                                          <Label layoutX="48.0" layoutY="317.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
                                              <font>
                                                 <Font name="Roboto Black" size="12.0" />
                                              </font>
                                           </Label>
-                                          <Separator layoutX="77.0" layoutY="349.0" prefHeight="2.0" prefWidth="233.0" />
-                                          <Label layoutX="80.0" layoutY="358.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
+                                          <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="317.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
                                              <font>
                                                 <Font name="Roboto Black" size="12.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="236.0" layoutY="358.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
+                                          <Separator layoutX="45.0" layoutY="340.0" prefHeight="2.0" prefWidth="330.0" />
+                                          <Label layoutX="48.0" layoutY="349.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
                                              <font>
                                                 <Font name="Roboto Black" size="12.0" />
                                              </font>
                                           </Label>
-                                          <Separator layoutX="77.0" layoutY="381.0" prefHeight="2.0" prefWidth="233.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="349.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
+                                             <font>
+                                                <Font name="Roboto Black" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="45.0" layoutY="372.0" prefHeight="2.0" prefWidth="330.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </VBox>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <AnchorPane layoutX="256.0" layoutY="38.0" prefHeight="53.0" prefWidth="51.0" style="-fx-background-color: #212733;" styleClass="fab">
-                                       <children>
-                                          <Label prefHeight="50.0" prefWidth="50.0">
-                                             <padding>
-                                                <Insets right="5.0" top="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <MaterialDesignIconView fill="WHITE" glyphName="BORDER_COLOR" layoutX="11.0" layoutY="40.0" size="26" wrappingWidth="22.666656494140625" />
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </AnchorPane>
                            </children>
                         </StackPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="26.0" layoutY="32.0" prefHeight="106.0" prefWidth="706.0" style="-fx-background-color: rgb(0, 115, 183,0.6); -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 5;">
+                  <AnchorPane layoutX="26.0" layoutY="9.0" prefHeight="106.0" prefWidth="706.0" style="-fx-background-color: rgb(0, 115, 183,0.6); -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 5;">
                      <children>
-                        <Pane layoutX="25.0" layoutY="-22.0" prefHeight="76.0" prefWidth="116.0" style="-fx-background-color: #0073B7; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4;" />
-                        <JFXTextField focusColor="#fcfcfc" labelFloat="true" layoutX="161.0" layoutY="14.0" maxWidth="349.0" minWidth="214.0" prefHeight="31.0" prefWidth="349.0" promptText="Search by name or id " unFocusColor="WHITE">
+                        <Pane layoutX="25.0" layoutY="-22.0" prefHeight="76.0" prefWidth="116.0" style="-fx-background-color: #0073B7; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4;" visible="false" />
+                        <JFXTextField id="search-textField" focusColor="#fcfcfc" labelFloat="true" layoutX="10.0" layoutY="14.0" maxWidth="500.0" minWidth="214.0" prefHeight="31.0" prefWidth="500.0" promptText="  Type To Search...." style="-fx-text-fill: #FFFFFF;" styleClass="text-field" unFocusColor="WHITE">
                            <font>
                               <Font name="Roboto Black" size="13.0" />
                            </font>
@@ -162,69 +169,73 @@
                               <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14.0" wrappingWidth="19.0" />
                            </graphic>
                         </JFXButton>
-                        <HBox layoutX="25.0" layoutY="62.0" prefHeight="36.0" prefWidth="673.0" style="-fx-background-color: #DDE1F1; -fx-background-radius: 4; -fx-border-radius: 3; -fx-border-width: 1px; -fx-border-color: #0073B7;">
+                        <HBox layoutX="2.0" layoutY="62.0" prefHeight="36.0" prefWidth="696.0" style="-fx-background-color: inherit; -fx-background-radius: 4; -fx-border-radius: 3; -fx-border-width: 1px; -fx-border-color: #0073B7;" styleClass="card-unpadded" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #0073B7; -fx-background-radius: 2 0 0 2; -fx-text-fill: white;" text="Filter with: ">
+                              <Label alignment="CENTER" prefHeight="34.0" prefWidth="97.0" style="-fx-background-radius: 2 0 0 2; -fx-text-fill: white;" text="Filter with: ">
                                  <font>
-                                    <Font name="System Italic" size="17.0" />
+                                    <Font size="17.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <JFXComboBox prefHeight="28.0" prefWidth="120.0" promptText="Category">
+                              <JFXComboBox focusColor="WHITE" prefHeight="28.0" prefWidth="120.0" promptText="Category" styleClass="combobox-fill-color" unFocusColor="WHITE">
                                  <HBox.margin>
-                                    <Insets left="10.0" right="8.0" />
+                                    <Insets left="30.0" />
                                  </HBox.margin>
                               </JFXComboBox>
-                              <JFXComboBox prefHeight="28.0" prefWidth="120.0" promptText="Brand">
+                              <JFXComboBox focusColor="WHITE" prefHeight="28.0" prefWidth="120.0" promptText="Brand" styleClass="combobox-fill-color" unFocusColor="WHITE">
                                  <HBox.margin>
-                                    <Insets right="8.0" />
+                                    <Insets left="30.0" />
                                  </HBox.margin>
                               </JFXComboBox>
-                              <JFXComboBox layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="120.0" promptText="Supplier">
+                              <JFXComboBox focusColor="WHITE" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="120.0" promptText="Supplier" styleClass="combobox-fill-color" unFocusColor="WHITE">
                                  <HBox.margin>
-                                    <Insets right="8.0" />
+                                    <Insets left="30.0" />
                                  </HBox.margin>
                               </JFXComboBox>
-                              <JFXComboBox layoutX="110.0" layoutY="10.0" prefHeight="28.0" prefWidth="120.0" promptText="Date">
+                              <JFXComboBox focusColor="WHITE" layoutX="110.0" layoutY="10.0" prefHeight="28.0" prefWidth="120.0" promptText="Date" styleClass="combobox-fill-color" unFocusColor="WHITE">
                                  <HBox.margin>
-                                    <Insets right="8.0" />
+                                    <Insets left="30.0" right="8.0" />
                                  </HBox.margin>
                               </JFXComboBox>
                            </children>
                         </HBox>
                      </children>
                   </AnchorPane>
-                  <HBox alignment="CENTER" layoutX="751.0" layoutY="14.0" prefHeight="115.0" prefWidth="320.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="624.0" prefHeight="76.0" prefWidth="717.0" spacing="10.0">
                      <children>
-                        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="115.0" prefWidth="278.0">
+                        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="707.0">
                            <columnConstraints>
-                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="130.0" minWidth="6.0" prefWidth="6.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="147.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="96.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="113.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="187.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <JFXButton buttonType="RAISED" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="Delete" GridPane.columnIndex="3">
                                  <graphic>
                                     <MaterialDesignIconView glyphName="DELETE" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton buttonType="RAISED" prefHeight="40.0" prefWidth="236.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="Add New Product" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="236.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="Add New Product" GridPane.columnSpan="2">
                                  <graphic>
                                     <MaterialDesignIconView glyphName="LIBRARY_PLUS" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton buttonType="RAISED" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="Update" GridPane.columnIndex="2">
                                  <graphic>
                                     <MaterialDesignIconView glyphName="PENCIL" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </JFXButton>
                            </children>
+                           <styleClass>
+                              <String fx:value="card-subtitle" />
+                              <String fx:value="card-unpadded" />
+                           </styleClass>
                         </GridPane>
                      </children>
                      <padding>

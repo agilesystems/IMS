@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane prefHeight="684.0" prefWidth="1105.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.WelcomeController">
+<AnchorPane prefHeight="705.0" prefWidth="1216.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.WelcomeController">
          <children>
-            <VBox layoutX="20.0" layoutY="14.0" prefHeight="431.0" prefWidth="402.0" spacing="10.0" styleClass="card">
+            <VBox layoutX="20.0" layoutY="14.0" prefHeight="431.0" prefWidth="441.0" spacing="10.0" styleClass="card">
                <children>
                   <Label prefHeight="40.0" prefWidth="206.0" styleClass="card-title" text="فارما نت" />
                   <Separator prefHeight="2.0" prefWidth="384.0" />
@@ -41,10 +41,10 @@
                   <Separator prefWidth="200.0" />
                </children>
             </VBox>
-            <VBox layoutX="20.0" layoutY="456.0" prefHeight="200.0" prefWidth="406.0" spacing="8.0" styleClass="card">
+            <VBox layoutX="20.0" layoutY="456.0" prefHeight="212.0" prefWidth="406.0" spacing="8.0" styleClass="card">
                <children>
                   <Label styleClass="card-title" text="الحالة المالية" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="140.0" prefWidth="374.0" spacing="20.0">
                      <children>
                         <VBox prefHeight="130.0" prefWidth="110.0" styleClass="card-unpadded">
                            <children>
@@ -80,7 +80,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="689.0" layoutY="14.0" prefHeight="487.0" prefWidth="402.0" spacing="9.0" styleClass="card">
+            <VBox layoutX="760.0" layoutY="14.0" prefHeight="487.0" prefWidth="441.0" spacing="9.0" styleClass="card">
                <children>
                   <Label styleClass="card-title" text="User Profile" />
                   <Separator prefWidth="200.0" />
@@ -128,7 +128,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox layoutX="439.0" layoutY="14.0" prefHeight="490.0" prefWidth="232.0" spacing="5.0" styleClass="card">
+            <VBox layoutX="489.0" layoutY="14.0" prefHeight="490.0" prefWidth="248.0" spacing="5.0" styleClass="card">
                <children>
                   <Label prefHeight="35.0" prefWidth="201.0" text="اونلاين اوردر" />
                   <Separator prefWidth="200.0" />
@@ -142,7 +142,7 @@
                   <JFXCheckBox allowIndeterminate="true" checkedColor="#f51ba9" indeterminate="true" layoutX="26.0" layoutY="274.0" prefHeight="35.0" prefWidth="200.0" selected="true" text="Order no  8" />
                </children>
             </VBox>
-            <HBox fillHeight="false" layoutX="442.0" layoutY="536.0" prefHeight="127.0" prefWidth="649.0" spacing="30.0">
+            <HBox alignment="CENTER" fillHeight="false" layoutX="438.0" layoutY="525.0" prefHeight="142.0" prefWidth="765.0" spacing="30.0" styleClass="card-unpadded">
                <children>
                   <VBox prefHeight="124.0" prefWidth="142.0" style="-fx-background-color: rgb(0, 192, 239);" styleClass="card">
                      <children>
@@ -162,10 +162,10 @@
                         <Label prefHeight="36.0" prefWidth="110.0" style="-fx-text-fill: white; -fx-font-family: roboto; -fx-font-weight: bold; -fx-font-size: 16;" text="اصناف" />
                      </children>
                   </VBox>
-                  <VBox layoutX="354.0" layoutY="10.0" prefHeight="124.0" prefWidth="142.0" style="-fx-background-color: rgb(243, 156, 18);" styleClass="card">
+                  <VBox layoutX="354.0" layoutY="10.0" prefHeight="124.0" prefWidth="177.0" style="-fx-background-color: rgb(243, 156, 18);" styleClass="card">
                      <children>
                         <Label prefHeight="57.0" prefWidth="134.0" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 36;" text="100 %" />
-                        <Label prefHeight="36.0" prefWidth="110.0" style="-fx-text-fill: white; -fx-font-family: roboto; -fx-font-weight: bold; -fx-font-size: 16;" text="اصناف حد الطلب" />
+                        <Label prefHeight="36.0" prefWidth="151.0" style="-fx-text-fill: white; -fx-font-family: roboto; -fx-font-weight: bold; -fx-font-size: 16;" text="اصناف حد الطلب" />
                      </children>
                   </VBox>
                </children>
