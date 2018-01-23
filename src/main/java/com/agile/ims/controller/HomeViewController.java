@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -50,6 +52,8 @@ public class HomeViewController implements Initializable {
     private VBox sidePane;
     @FXML
     private AnchorPane homeAnchorPane;
+    
+    TranslateTransition sideMenu;
 
     /**
      * Initializes the controller class.
@@ -66,12 +70,8 @@ public class HomeViewController implements Initializable {
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
             transition.setRate(transition.getRate() * -1);
             transition.play();
-
-            if (drawer.isShown()) {
-                drawer.close();
-            } else {
-                drawer.open();
-            }
+            //*********To make drawer open side by side with other pane*********
+            OpenCloseDrawer(sideMenu, holderPane);
 
         });
 
@@ -81,7 +81,8 @@ public class HomeViewController implements Initializable {
             AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW));
             setNode(welcome);
             drawer.setSidePane(sidePane);
-
+            //*********Start with drawer Shown*********
+            drawer.open();
             for (Node node : sidePane.getChildren()) {
                 if (node.getAccessibleText() != null) {
                     node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent ev) -> {
@@ -163,6 +164,24 @@ public class HomeViewController implements Initializable {
                 }
             }
 
+        }
+    }
+    
+    public void OpenCloseDrawer(TranslateTransition sideMenu, Node node) {
+        sideMenu = new TranslateTransition(Duration.millis(400.0), node);
+        if (drawer.isHidden()) {
+            
+            sideMenu.setFromX(-140);
+            sideMenu.setToX(0);
+            sideMenu.play();
+            drawer.open();
+            
+        }else{
+            
+           sideMenu.setFromX(0);
+            sideMenu.setToX(-140);
+            sideMenu.play();
+            drawer.close();           
         }
     }
 

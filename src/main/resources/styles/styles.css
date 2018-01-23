@@ -341,6 +341,13 @@ search field
 .blue-titledPane> .title> .arrow-button .arrow{
     -fx-background-color: white;
 }
+
+#search-textField {
+    -fx-prompt-text-fill: #FFFFFF;
+}
+.combobox-fill-color{
+   -fx-prompt-text-fill: #FFFFFF;
+}
 /*
 .menu-item{
     -fx-background-color: #5077ff  #0099e4;

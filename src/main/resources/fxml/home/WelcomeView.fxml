@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1216.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.WelcomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="670.0" prefWidth="1216.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.WelcomeController">
          <children>
             <VBox layoutX="20.0" layoutY="14.0" prefHeight="431.0" prefWidth="441.0" spacing="10.0" styleClass="card">
                <children>
@@ -41,7 +41,7 @@
                   <Separator prefWidth="200.0" />
                </children>
             </VBox>
-            <VBox layoutX="20.0" layoutY="456.0" prefHeight="212.0" prefWidth="406.0" spacing="8.0" styleClass="card">
+            <VBox layoutX="19.0" layoutY="456.0" prefHeight="198.0" prefWidth="406.0" spacing="8.0" styleClass="card">
                <children>
                   <Label styleClass="card-title" text="الحالة المالية" />
                   <HBox alignment="CENTER_LEFT" prefHeight="140.0" prefWidth="374.0" spacing="20.0">
@@ -142,7 +142,7 @@
                   <JFXCheckBox allowIndeterminate="true" checkedColor="#f51ba9" indeterminate="true" layoutX="26.0" layoutY="274.0" prefHeight="35.0" prefWidth="200.0" selected="true" text="Order no  8" />
                </children>
             </VBox>
-            <HBox alignment="CENTER" fillHeight="false" layoutX="438.0" layoutY="525.0" prefHeight="142.0" prefWidth="765.0" spacing="30.0" styleClass="card-unpadded">
+            <HBox alignment="CENTER" fillHeight="false" layoutX="436.0" layoutY="513.0" prefHeight="142.0" prefWidth="765.0" spacing="30.0" styleClass="card-unpadded">
                <children>
                   <VBox prefHeight="124.0" prefWidth="142.0" style="-fx-background-color: rgb(0, 192, 239);" styleClass="card">
                      <children>
