@@ -39,7 +39,7 @@ public class Routes {
             if (key == id) {
                 if (forms.get(key) == null) {
                     try {
-                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)));
+                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)),IMS.bundle);
                     } catch (IOException ex) {
                         Logger.getLogger(Routes.class.getName()).log(Level.SEVERE, null, ex);
                     }

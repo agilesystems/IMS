@@ -3,6 +3,7 @@ package com.agile.ims;
 import com.agile.ims.entity.User;
 import com.agile.ims.helper.Routes;
 import com.jfoenix.controls.JFXDecorator;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,7 @@ public class IMS extends Application {
     public static ConfigurableApplicationContext context;
     private Parent root;
     public static Stage stage;
+    public static ResourceBundle bundle;
 
     @Override
     public void init() throws Exception {
@@ -41,8 +43,8 @@ public class IMS extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.LOGINVIEW));
+        bundle = ResourceBundle.getBundle("bundle_ar");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(Routes.LOGINVIEW),bundle);
         loader.setControllerFactory(context::getBean);
         root = loader.load();
         JFXDecorator decorator = new JFXDecorator(stage, root, false, false, true);

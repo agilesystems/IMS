@@ -123,7 +123,7 @@ public class LoginController implements Initializable {
                 user.setUsername(txtUsername.getText());
                 loadAllFroms();
                 IMS.stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW));
+                Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW),IMS.bundle);
                 root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
                 JFXDecorator decorator = new JFXDecorator(IMS.stage, root, false, false, true);
                 decorator.setCustomMaximize(true);
@@ -155,7 +155,7 @@ public class LoginController implements Initializable {
             try {
 
                 System.out.println("add form" + m.toString());
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(m.getFxml()));
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(m.getFxml()),IMS.bundle);
                 if (anchorPane != null) {
                     Routes.forms.put(m.getId(),
                             null

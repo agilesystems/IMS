@@ -63,7 +63,7 @@
                                  <children>
                                     <Pane prefHeight="62.0" prefWidth="320.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4; -fx-background-color: #E7414D;">
                                        <children>
-                                          <Label alignment="CENTER" layoutX="65.0" layoutY="-1.0" prefHeight="62.0" prefWidth="320.0" style="-fx-text-fill: #FFFFFF;" text="Product Information" textFill="#eeecec">
+                                          <Label alignment="CENTER" layoutX="65.0" layoutY="-1.0" prefHeight="62.0" prefWidth="320.0" style="-fx-text-fill: #FFFFFF;" text="%info.lbl" textFill="#eeecec">
                                              <font>
                                                 <Font size="28.0" />
                                              </font>
@@ -161,7 +161,7 @@
                               <Font name="Roboto Black" size="13.0" />
                            </font>
                         </JFXTextField>
-                        <JFXButton buttonType="RAISED" layoutX="520.0" layoutY="17.0" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #0073B7;" text="Advance Search" textFill="#fffefe">
+                        <JFXButton buttonType="RAISED" layoutX="520.0" layoutY="17.0" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #0073B7;" text="%search.btn" textFill="#fffefe">
                            <font>
                               <Font name="Roboto Black" size="13.0" />
                            </font>
@@ -216,17 +216,17 @@
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="Delete" GridPane.columnIndex="3">
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="%delete.btn" GridPane.columnIndex="3">
                                  <graphic>
                                     <MaterialDesignIconView glyphName="DELETE" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="236.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="Add New Product" GridPane.columnSpan="2">
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="236.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="%add.btn" GridPane.columnSpan="2">
                                  <graphic>
                                     <MaterialDesignIconView glyphName="LIBRARY_PLUS" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="Update" GridPane.columnIndex="2">
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="%update.btn" GridPane.columnIndex="2">
                                  <graphic>
                                     <MaterialDesignIconView glyphName="PENCIL" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
                                  </graphic>

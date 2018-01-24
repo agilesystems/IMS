@@ -76,9 +76,9 @@ public class HomeViewController implements Initializable {
         });
 
         try {
-            sidePane = FXMLLoader.load(getClass().getResource(Routes.DRAWERVIEW));
+            sidePane = FXMLLoader.load(getClass().getResource(Routes.DRAWERVIEW),IMS.bundle);
             drawMenus();
-            AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW));
+            AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW),IMS.bundle);
             setNode(welcome);
             drawer.setSidePane(sidePane);
             //*********Start with drawer Shown*********
