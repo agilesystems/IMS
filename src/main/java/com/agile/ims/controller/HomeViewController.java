@@ -88,7 +88,7 @@ public class HomeViewController implements Initializable {
                     node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent ev) -> {
                         switch (node.getAccessibleText()) {
                             case "homeMenu":
-                                drawer.close();
+                                OpenCloseDrawer(sideMenu, holderPane);
                                 txtCurrentWindow.setText("X-Net");
                                 setNode(welcome);
                                 break;
@@ -152,6 +152,7 @@ public class HomeViewController implements Initializable {
                         Menu subMenu = new Menu(m.getTitle());
                         subMenu.setOnAction(v -> {
                             Routes.openNode(this, m.getId());
+                            OpenCloseDrawer(sideMenu, holderPane);
                         });
                         rootMenu.getItems().add(subMenu);
                     }
@@ -174,6 +175,7 @@ public class HomeViewController implements Initializable {
             sideMenu.setFromX(-140);
             sideMenu.setToX(0);
             sideMenu.play();
+            drawer.setVisible(true);
             drawer.open();
             
         }else{
@@ -181,7 +183,8 @@ public class HomeViewController implements Initializable {
            sideMenu.setFromX(0);
             sideMenu.setToX(-140);
             sideMenu.play();
-            drawer.close();           
+            drawer.close();   
+            drawer.setVisible(false);
         }
     }
 
