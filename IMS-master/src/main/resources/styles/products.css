@@ -1,0 +1,73 @@
+.mainFxmlClass {
+
+}
+
+.root{
+    -fx-background-color:white;
+}
+
+.text-field{
+/*    
+    
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-text-fill: black;
+    -fx-font-size: 15px; 
+    -fx-border-width: 1px;
+    -fx-border-color: #D7D7D7;
+    -fx-prompt-text-fill: white;
+    -fx-padding: 5px 35px 5px 15px;*/
+    -fx-background-color: white;
+    
+
+}
+
+.text-field:focused{
+    
+}
+
+.button{
+    -fx-border-width: 1px;
+    -fx-border-radius: 50px;
+    -fx-background-color: #0096C9;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #FFFFFF;
+    
+}
+
+/*.button:pressed{
+    -fx-background-color: #C2352A;
+}*/
+
+.button:hover{
+    -fx-background-color: #26557C;
+}
+.column-header{
+    -fx-background-color:#FFFFFF;
+    -fx-border-color:#CFD8DC;
+}
+
+.toggle-button {
+    -fx-background-color: #26557C;
+    -fx-text-fill: white;
+}
+
+.glyph-icon:hover{
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.3), 8, 0, 0, 0);
+}
+
+.borderTitled {
+    -fx-border-insets: 8 0 0 0;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+#deleteBtn {
+    -fx-background-color: #E7414D;
+}
+
+#deleteBtn:hover {
+    -fx-background-color: red;
+}
