@@ -6,6 +6,59 @@
     -swatchBlue:#3c8dbc;
     -darkSide:#222d32;
 }
+
+.glyph-icon{ 
+    /*"FontAwesome";*/
+    /*-fx-font-family:"Material Design Icons";*/
+    -fx-font-size : 30;
+    -fx-font-family: 'Material Design Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+        local('MaterialIcons-Regular'),
+        url(fonts/MaterialIcons-Regular.woff2) format('woff2'),
+        url(fonts/MaterialIcons-Regular.woff) format('woff'),
+        url(fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style : normal;
+    src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+    src : url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"),
+        url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"),
+        url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"),
+        url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
+        url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
+
 @font-face {
     -fx-font-family: Roboto;
     src:"/fonts/Roboto-Regular.ttf";
@@ -156,6 +209,13 @@
     -fx-font-weight:bold ;
     -fx-pref-width: 100px;
 
+}
+.button{
+    -fx-border-width: 1px;
+    -fx-border-radius: 50px;
+    -fx-background-color: #0096C9;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #FFFFFF;
 }
 
 
@@ -342,12 +402,12 @@ search field
     -fx-background-color: white;
 }
 
-#search-textField {
+/*#search-textField {
     -fx-prompt-text-fill: #FFFFFF;
 }
 .combobox-fill-color{
    -fx-prompt-text-fill: #FFFFFF;
-}
+}*/
 /*
 .menu-item{
     -fx-background-color: #5077ff  #0099e4;

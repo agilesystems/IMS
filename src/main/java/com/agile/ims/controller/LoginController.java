@@ -33,10 +33,8 @@ import com.agile.ims.service.UserService;
 import java.util.HashMap;
 import javafx.application.Platform;
 import javafx.geometry.NodeOrientation;
-import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Screen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -72,7 +70,6 @@ public class LoginController implements Initializable {
         IMS.user = null;
 //        IMS.stage=null;
         Routes.forms = null;
-
         //*********To focus on userName field*********
         Platform.runLater(new Runnable() {
             @Override
@@ -80,7 +77,6 @@ public class LoginController implements Initializable {
                 txtUsername.requestFocus();
             }
         });
-
         //*********To Use Enter Key To login*********
         txtPassword.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -123,21 +119,22 @@ public class LoginController implements Initializable {
                 user.setUsername(txtUsername.getText());
                 loadAllFroms();
                 IMS.stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW),IMS.bundle);
+                Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW), IMS.bundle);
                 root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                JFXDecorator decorator = new JFXDecorator(IMS.stage, root, false, false, true);
+                JFXDecorator decorator = new JFXDecorator(IMS.stage, root, false, true, true);
                 decorator.setCustomMaximize(true);
                 decorator.setBorder(Border.EMPTY);
-                
+
                 //*********To get screen resolution (width and hight) and use it to maximize to full screen*********
-                Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-                Scene scene = new Scene(decorator,visualBounds.getWidth(), visualBounds.getHeight());
+//                Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+                Scene scene = new Scene(decorator/*, visualBounds.getWidth(), visualBounds.getHeight()*/);
                 scene.getStylesheets().add(IMS.class.getResource("/styles/styles.css").toExternalForm());
                 IMS.stage.initStyle(StageStyle.UNDECORATED);
                 IMS.stage.setScene(scene);
                 IMS.stage.setTitle("X-NET");
                 IMS.stage.setIconified(false);
                 IMS.stage.show();
+                Routes.fadeInTransition(root, 2.0);
                 //Hide login window
                 btnLogin.getScene().getWindow().hide();
             } catch (IOException ex) {
@@ -148,14 +145,14 @@ public class LoginController implements Initializable {
     }
 
     private void loadAllFroms() {
-        Routes.forms = new HashMap<Integer, AnchorPane>();
+        Routes.forms = new HashMap<Integer, Node>();
         IMS.user.getUserMenuCollection().stream().filter((m) -> !(m.getFxml() == null)).map((m) -> {
             return m;
         }).forEachOrdered((m) -> {
             try {
 
                 System.out.println("add form" + m.toString());
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(m.getFxml()),IMS.bundle);
+                Node anchorPane = FXMLLoader.load(getClass().getResource(m.getFxml()), IMS.bundle);
                 if (anchorPane != null) {
                     Routes.forms.put(m.getId(),
                             null

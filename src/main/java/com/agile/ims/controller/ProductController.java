@@ -5,12 +5,12 @@
  */
 package com.agile.ims.controller;
 
-import javafx.event.ActionEvent;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
@@ -19,78 +19,18 @@ import javafx.scene.control.ToggleButton;
 public class ProductController {
 
     @FXML
-    private ToggleButton btnStock;
+    private JFXButton addbtn;
     @FXML
-    private ToggleButton btnSupplyer;
+    private JFXButton updatebtn;
     @FXML
-    private ToggleButton btnBrands;
+    private JFXButton delbtn;
     @FXML
-    private ToggleButton btnCatagory;
+    private JFXButton adSearchbtn;
+    @FXML
+    private JFXTextField searchtxt;
     @FXML
     private TableView<?> tableView;
     @FXML
-    private TableColumn<?, ?> idCol;
-    @FXML
-    private TableColumn<?, ?> nameCol;
-    @FXML
-    private TableColumn<?, ?> unitIdCol;
-    @FXML
-    private TableColumn<?, ?> groupIdCol;
-    @FXML
-    private TableColumn<?, ?> buyPriceCol;
-    @FXML
-    private TableColumn<?, ?> sellPriceCol;
-    @FXML
-    private TableColumn<?, ?> barcodeCol;
-    @FXML
-    private TableColumn<?, ?> globalCodeCol;
-    @FXML
-    private TableColumn<?, ?> localCodeCol;
-    @FXML
-    private TableColumn<?, ?> lowestPriceCol;
-    @FXML
-    private TableColumn<?, ?> lowestQuantityCol;
-    @FXML
-    private TableColumn<?, ?> expireDateCol;
-    @FXML
-    private TableColumn<?, ?> expiredCol;
-    @FXML
-    private TableColumn<?, ?> extraInfoCol;
-    @FXML
-    private TableColumn<?, ?> photoCol;
-    @FXML
-    private TableColumn<?, ?> createdByCol;
-    @FXML
-    private TableColumn<?, ?> createdAtCol;
-    @FXML
-    private TableColumn<?, ?> updatedByCol;
-    @FXML
-    private TableColumn<?, ?> updatedAtCol;
-    @FXML
-    private TableColumn<?, ?> deletedCol;
-    @FXML
-    private TableColumn<?, ?> deletedByCol;
-    @FXML
-    private Button deleteBtn;
-
-    @FXML
-    private void btnStockOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSupplyerOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnBrandsOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnCatagoryOnAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void addProduct(ActionEvent event) {
-    }
+    private BorderPane homeAnchorPane;
     
 }

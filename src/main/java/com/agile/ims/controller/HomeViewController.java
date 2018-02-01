@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.agile.ims.helper.Routes;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -18,20 +20,25 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -44,7 +51,7 @@ public class HomeViewController implements Initializable {
     @FXML
     private JFXHamburger hamburger;
     @FXML
-    private AnchorPane holderPane;
+    private StackPane holderPane;
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -52,8 +59,12 @@ public class HomeViewController implements Initializable {
     private VBox sidePane;
     @FXML
     private AnchorPane homeAnchorPane;
-    
+
     TranslateTransition sideMenu;
+    @FXML
+    private JFXButton langbtn;
+    @FXML
+    private AnchorPane mainAnchorPane;
 
     /**
      * Initializes the controller class.
@@ -66,29 +77,26 @@ public class HomeViewController implements Initializable {
 
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
-
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
             transition.setRate(transition.getRate() * -1);
             transition.play();
-            //*********To make drawer open side by side with other pane*********
             OpenCloseDrawer(sideMenu, holderPane);
 
         });
 
         try {
-            sidePane = FXMLLoader.load(getClass().getResource(Routes.DRAWERVIEW),IMS.bundle);
+            sidePane = FXMLLoader.load(getClass().getResource(Routes.DRAWERVIEW), IMS.bundle);
             drawMenus();
-            AnchorPane welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW),IMS.bundle);
+            Node welcome = FXMLLoader.load(getClass().getResource(Routes.WELCOMEVIEW), IMS.bundle);
             setNode(welcome);
             drawer.setSidePane(sidePane);
-            //*********Start with drawer Shown*********
-            drawer.open();
+
             for (Node node : sidePane.getChildren()) {
                 if (node.getAccessibleText() != null) {
                     node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent ev) -> {
                         switch (node.getAccessibleText()) {
                             case "homeMenu":
-                                OpenCloseDrawer(sideMenu, holderPane);
+                                Routes.fadeInTransition(holderPane, 2.0);
                                 txtCurrentWindow.setText("X-Net");
                                 setNode(welcome);
                                 break;
@@ -167,28 +175,68 @@ public class HomeViewController implements Initializable {
 
         }
     }
-    
+
     public void OpenCloseDrawer(TranslateTransition sideMenu, Node node) {
         sideMenu = new TranslateTransition(Duration.millis(400.0), node);
         if (drawer.isHidden()) {
-            
-            sideMenu.setFromX(-140);
-            sideMenu.setToX(0);
-            sideMenu.play();
-            drawer.setVisible(true);
+
+//            sideMenu.setFromX(-140);
+//            sideMenu.setToX(0);
+//            sideMenu.play();
+//            drawer.setVisible(true);
             drawer.open();
-            
-        }else{
-            
-           sideMenu.setFromX(0);
-            sideMenu.setToX(-140);
-            sideMenu.play();
-            drawer.close();   
-            drawer.setVisible(false);
+
+        } else {
+//            
+//           sideMenu.setFromX(0);
+//            sideMenu.setToX(-140);
+//            sideMenu.play();
+            drawer.close();
+//            drawer.setVisible(false);
         }
     }
 
-    public AnchorPane getHolderPane() {
+    @FXML
+    private void changeLanguage(ActionEvent event) throws IOException {
+
+        if (event.getSource().equals(langbtn) && langbtn.getText().equals("العربية")) {
+            IMS.bundle = ResourceBundle.getBundle("bundle_ar");
+            IMS.stage.close();
+            IMS.stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW), IMS.bundle);
+            root.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            JFXDecorator decorator = new JFXDecorator(IMS.stage, root, false, true, true);
+            decorator.setCustomMaximize(true);
+            decorator.setBorder(Border.EMPTY);
+
+            Scene scene = new Scene(decorator/*, visualBounds.getWidth(), visualBounds.getHeight()*/);
+            scene.getStylesheets().add(IMS.class.getResource("/styles/styles.css").toExternalForm());
+            IMS.stage.initStyle(StageStyle.UNDECORATED);
+            IMS.stage.setScene(scene);
+            IMS.stage.setTitle("X-NET");
+            IMS.stage.setIconified(false);
+            IMS.stage.show();
+        } else if (event.getSource().equals(langbtn) && langbtn.getText().equals("English")) {
+            IMS.bundle = ResourceBundle.getBundle("bundle_en");
+            IMS.stage.close();
+            IMS.stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource(Routes.MAINVIEW), IMS.bundle);
+            root.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            JFXDecorator decorator = new JFXDecorator(IMS.stage, root, false, true, true);
+            decorator.setCustomMaximize(true);
+            decorator.setBorder(Border.EMPTY);
+
+            Scene scene = new Scene(decorator/*, visualBounds.getWidth(), visualBounds.getHeight()*/);
+            scene.getStylesheets().add(IMS.class.getResource("/styles/styles.css").toExternalForm());
+            IMS.stage.initStyle(StageStyle.UNDECORATED);
+            IMS.stage.setScene(scene);
+            IMS.stage.setTitle("X-NET");
+            IMS.stage.setIconified(false);
+            IMS.stage.show();
+        }
+    }
+
+    public StackPane getHolderPane() {
         return holderPane;
     }
 

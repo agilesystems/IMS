@@ -8,14 +8,14 @@ package com.agile.ims.helper;
 import com.agile.ims.IMS;
 import com.agile.ims.controller.HomeViewController;
 import com.agile.ims.entity.UserMenu;
-import com.jfoenix.controls.JFXDrawer;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 /**
  *
@@ -31,15 +31,15 @@ public class Routes {
     public static String DOCTORSVIEW = "/fxml/doctor/DoctorsView.fxml";
     public static String WELCOMEVIEW = "/fxml/home/WelcomeView.fxml";
     public static int HOME_ID = 1;
-    public static HashMap<Integer, AnchorPane> forms;
+    public static HashMap<Integer, Node> forms;
 
-    public static AnchorPane anchorPane(int id) {
+    public static Node anchorPane(int id) {
 
         for (int key : forms.keySet()) {
             if (key == id) {
                 if (forms.get(key) == null) {
                     try {
-                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)),IMS.bundle);
+                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)), IMS.bundle);
                     } catch (IOException ex) {
                         Logger.getLogger(Routes.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -70,13 +70,14 @@ public class Routes {
      * @param node node to be open
      */
     public static void openNode(HomeViewController home, int formId) {
-        AnchorPane form = Routes.anchorPane(formId);
+        Node form = Routes.anchorPane(formId);
         if (form == null) {
             return;
         }
         home.getDrawer().close();
         home.getHolderPane().getChildren().clear();
         home.getHolderPane().getChildren().add(form);
+        fadeInTransition(form, 2.0);
         for (UserMenu um : IMS.user.getUserMenuCollection()) {
             if (um.getId() == formId) {
                 home.getTxtCurrentWindow().setText(um.getTitle());
@@ -85,4 +86,12 @@ public class Routes {
         }
 
     }
+
+    public static void fadeInTransition(Node node, Double duration) {
+        FadeTransition fadeInTransition = new FadeTransition(Duration.seconds(duration), node);
+        fadeInTransition.setFromValue(0.0);
+        fadeInTransition.setToValue(1.0);
+        fadeInTransition.play();
+    }
+
 }

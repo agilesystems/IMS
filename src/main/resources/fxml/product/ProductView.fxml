@@ -1,250 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1216.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <StackPane layoutX="10.0" layoutY="10.0" prefHeight="660.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<BorderPane fx:id="homeAnchorPane" minHeight="-Infinity" prefHeight="640.0" prefWidth="1140.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.ProductController">
+   <center>
+      <HBox BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="20.0" />
+         </BorderPane.margin>
          <children>
-            <AnchorPane fx:id="secondAnchorPane" prefHeight="660.0" prefWidth="1216.0" style="-fx-background-color: #FFFFFF;">
+            <VBox prefHeight="493.0" prefWidth="506.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tableView" layoutX="26.0" layoutY="124.0" prefHeight="445.0" prefWidth="706.0" style="-fx-background-color: #F2F2F2;">
-                     <columns>
-                        <TableColumn prefWidth="24.0" />
-                        <TableColumn prefWidth="119.0" text="ID" />
-                        <TableColumn prefWidth="311.0" text="PRODUCT NAMES" />
-                        <TableColumn prefWidth="326.0" text="PRODUCT PRICE" />
-                     </columns>
-                     <styleClass>
-                        <String fx:value="table-column" />
-                        <String fx:value="table-cell" />
-                        <String fx:value="table-column" />
-                        <String fx:value="card-unpadded" />
-                     </styleClass>
-                  </TableView>
-                  <AnchorPane layoutX="749.0" layoutY="9.0" prefHeight="490.0" prefWidth="450.0" styleClass="card-white">
+                  <VBox prefHeight="367.0" prefWidth="673.0" styleClass="card-unpadded" VBox.vgrow="ALWAYS">
                      <children>
-                        <StackPane layoutX="47.0" layoutY="39.0" prefHeight="611.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox alignment="CENTER" fillHeight="false" prefHeight="30.0" prefWidth="361.0" style="-fx-background-color: #0f818b;" styleClass="card-unpadded">
+                           <padding>
+                              <Insets bottom="30.0" top="30.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="100.0" right="100.0" top="-15.0" />
+                           </VBox.margin>
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                              <Label styleClass="custom-white-title-label" text="Products List" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tableView" prefHeight="349.0" prefWidth="506.0" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn prefWidth="119.0" text="%id.col" />
+                              <TableColumn prefWidth="311.0" text="%pro.name.col" />
+                              <TableColumn prefWidth="326.0" text="%price.col" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="10.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <right>
+      <VBox prefHeight="448.0" prefWidth="351.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <VBox prefHeight="367.0" prefWidth="673.0" styleClass="card-unpadded" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" fillHeight="false" minHeight="-Infinity" prefHeight="30.0" prefWidth="251.0" style="-fx-background-color: #213870;" styleClass="card-unpadded">
+                     <padding>
+                        <Insets bottom="30.0" top="30.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="-15.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefWidth="144.0" styleClass="custom-white-title-label" text="Product Details" />
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="349.0" prefWidth="343.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="203.0" prefWidth="349.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="341.0" style="-fx-background-color: white; -fx-border-radius: 3; -fx-border-color: #989898;" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <AnchorPane layoutX="256.0" layoutY="38.0" prefHeight="53.0" prefWidth="51.0" style="-fx-background-color: #212733;" styleClass="fab">
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="78.0" style="-fx-background-color: white;" text="Details:">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="-45.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <GridPane maxWidth="-Infinity" prefHeight="165.0" prefWidth="335.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="147.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="185.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="40.0" valignment="BOTTOM" />
+                                       </rowConstraints>
                                        <children>
-                                          <Label prefHeight="50.0" prefWidth="50.0">
-                                             <padding>
-                                                <Insets right="5.0" top="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <MaterialDesignIconView fill="WHITE" glyphName="BORDER_COLOR" layoutX="11.0" layoutY="40.0" size="26" wrappingWidth="22.666656494140625" />
+                                          <Label style="-fx-font-size: 13;" text="Speciality" />
+                                          <Label style="-fx-font-size: 13;" text="Taking Appointments ?" GridPane.rowIndex="2" />
+                                          <Label style="-fx-font-size: 13;" text="Pending Appointments" GridPane.rowIndex="3" />
+                                          <Label prefHeight="20.0" prefWidth="280.0" text="Cardiologist" GridPane.columnIndex="1" />
+                                          <Label prefHeight="20.0" prefWidth="280.0" text="Department of Cardiology" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label prefHeight="20.0" prefWidth="279.0" text="YES" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="60.0" style="-fx-font-weight: bold;" styleClass="red-label" text="12">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" right="15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <JFXButton minHeight="-Infinity" prefHeight="25.0" prefWidth="60.0" text="View" />
+                                             </children>
+                                          </HBox>
+                                          <JFXButton buttonType="RAISED" minHeight="-Infinity" prefHeight="30.0" prefWidth="100.0" ripplerFill="#53eb11" styleClass="blue-btn" text="Edit Info" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                        </children>
-                                    </AnchorPane>
+                                       <VBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </GridPane>
                                  </children>
-                              </AnchorPane>
-                              <VBox prefHeight="150.0" prefWidth="320.0" styleClass="card-unpadded">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="104.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="172.0" prefWidth="349.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="103.0" prefWidth="341.0" style="-fx-background-color: white; -fx-border-radius: 3; -fx-border-color: #989898;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" />
+                                 </HBox.margin>
                                  <children>
-                                    <Pane prefHeight="62.0" prefWidth="320.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4; -fx-background-color: #E7414D;">
+                                    <Label alignment="CENTER" prefHeight="20.0" prefWidth="142.0" style="-fx-background-color: white;" text="Personal Details:">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="-15.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <GridPane prefHeight="183.0" prefWidth="339.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="321.0" minWidth="10.0" prefWidth="321.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
-                                          <Label alignment="CENTER" layoutX="65.0" layoutY="-1.0" prefHeight="62.0" prefWidth="320.0" style="-fx-text-fill: #FFFFFF;" text="%info.lbl" textFill="#eeecec">
-                                             <font>
-                                                <Font size="28.0" />
-                                             </font>
-                                          </Label>
+                                          <Label prefHeight="20.0" prefWidth="300.0" text="ID No 30229182" GridPane.rowIndex="3" />
+                                          <Label prefHeight="20.0" prefWidth="300.0" text="Doctor" />
+                                          <Label prefHeight="20.0" prefWidth="300.0" text="Daniel" GridPane.rowIndex="1" />
+                                          <Label prefHeight="20.0" prefWidth="300.0" text="Mungatana" GridPane.rowIndex="2" />
+                                          <Label prefHeight="20.0" prefWidth="300.0" text="0717160344" GridPane.rowIndex="4" />
+                                          <Label prefHeight="20.0" prefWidth="300.0" text="danmlayah@gmail.com" GridPane.rowIndex="5" />
                                        </children>
-                                    </Pane>
-                                    <AnchorPane prefHeight="432.0" prefWidth="320.0">
-                                       <children>
-                                          <Separator layoutX="24.0" layoutY="125.0" prefHeight="0.0" prefWidth="350.0" />
-                                          <Separator layoutX="24.0" layoutY="243.0" prefHeight="0.0" prefWidth="350.0" />
-                                          <VBox layoutX="50.0" layoutY="37.0" prefHeight="85.0" prefWidth="221.0">
-                                             <children>
-                                                <Label prefHeight="30.0" prefWidth="221.0" text="Prduct Name:" textFill="#797878">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" prefWidth="221.0" text="Product Price:" textFill="#797878">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" prefWidth="221.0" text="EXP Date:" textFill="#797878">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </VBox>
-                                          <VBox layoutX="50.0" layoutY="138.0" prefHeight="90.0" prefWidth="221.0">
-                                             <children>
-                                                <Label prefHeight="30.0" prefWidth="214.0" text="Some Text" textFill="#797878">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" prefWidth="214.0" text="Some Text" textFill="#797878">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" prefWidth="214.0" text="Some Text" textFill="#797878">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </VBox>
-                                          <Label layoutX="48.0" layoutY="284.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="284.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Separator layoutX="45.0" layoutY="307.0" prefHeight="3.0" prefWidth="330.0" />
-                                          <Label layoutX="48.0" layoutY="317.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="317.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Separator layoutX="45.0" layoutY="340.0" prefHeight="2.0" prefWidth="330.0" />
-                                          <Label layoutX="48.0" layoutY="349.0" prefHeight="17.0" prefWidth="70.0" text="Quantity" textFill="#a19d9d">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="292.0" layoutY="349.0" prefHeight="17.0" prefWidth="70.0" text="10000" textFill="#868282">
-                                             <font>
-                                                <Font name="Roboto Black" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Separator layoutX="45.0" layoutY="372.0" prefHeight="2.0" prefWidth="330.0" />
-                                       </children>
-                                    </AnchorPane>
+                                    </GridPane>
                                  </children>
                               </VBox>
                            </children>
-                        </StackPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="26.0" layoutY="9.0" prefHeight="106.0" prefWidth="706.0" style="-fx-background-color: rgb(0, 115, 183,0.6); -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 5;">
-                     <children>
-                        <Pane layoutX="25.0" layoutY="-22.0" prefHeight="76.0" prefWidth="116.0" style="-fx-background-color: #0073B7; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 4;" visible="false" />
-                        <JFXTextField id="search-textField" focusColor="#fcfcfc" labelFloat="true" layoutX="10.0" layoutY="14.0" maxWidth="500.0" minWidth="214.0" prefHeight="31.0" prefWidth="500.0" promptText="  Type To Search...." style="-fx-text-fill: #FFFFFF;" styleClass="text-field" unFocusColor="WHITE">
-                           <font>
-                              <Font name="Roboto Black" size="13.0" />
-                           </font>
-                        </JFXTextField>
-                        <JFXButton buttonType="RAISED" layoutX="520.0" layoutY="17.0" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #0073B7;" text="%search.btn" textFill="#fffefe">
-                           <font>
-                              <Font name="Roboto Black" size="13.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="14.0" wrappingWidth="19.0" />
-                           </graphic>
-                        </JFXButton>
-                        <HBox layoutX="2.0" layoutY="62.0" prefHeight="36.0" prefWidth="696.0" style="-fx-background-color: inherit; -fx-background-radius: 4; -fx-border-radius: 3; -fx-border-width: 1px; -fx-border-color: #0073B7;" styleClass="card-unpadded" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                           <children>
-                              <Label alignment="CENTER" prefHeight="34.0" prefWidth="97.0" style="-fx-background-radius: 2 0 0 2; -fx-text-fill: white;" text="Filter with: ">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Label>
-                              <JFXComboBox focusColor="WHITE" prefHeight="28.0" prefWidth="120.0" promptText="Category" styleClass="combobox-fill-color" unFocusColor="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="30.0" />
-                                 </HBox.margin>
-                              </JFXComboBox>
-                              <JFXComboBox focusColor="WHITE" prefHeight="28.0" prefWidth="120.0" promptText="Brand" styleClass="combobox-fill-color" unFocusColor="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="30.0" />
-                                 </HBox.margin>
-                              </JFXComboBox>
-                              <JFXComboBox focusColor="WHITE" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="120.0" promptText="Supplier" styleClass="combobox-fill-color" unFocusColor="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="30.0" />
-                                 </HBox.margin>
-                              </JFXComboBox>
-                              <JFXComboBox focusColor="WHITE" layoutX="110.0" layoutY="10.0" prefHeight="28.0" prefWidth="120.0" promptText="Date" styleClass="combobox-fill-color" unFocusColor="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="8.0" />
-                                 </HBox.margin>
-                              </JFXComboBox>
-                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
-                  </AnchorPane>
-                  <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="581.0" prefHeight="76.0" prefWidth="717.0" spacing="10.0">
-                     <children>
-                        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="707.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="147.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="96.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="113.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="187.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="%delete.btn" GridPane.columnIndex="3">
-                                 <graphic>
-                                    <MaterialDesignIconView glyphName="DELETE" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="236.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="%add.btn" GridPane.columnSpan="2">
-                                 <graphic>
-                                    <MaterialDesignIconView glyphName="LIBRARY_PLUS" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton buttonType="RAISED" prefHeight="34.0" style="-fx-background-color: #0073B7; -fx-text-fill: #FFFFFF;" text="%update.btn" GridPane.columnIndex="2">
-                                 <graphic>
-                                    <MaterialDesignIconView glyphName="PENCIL" size="30" style="-fx-fill: #FFFFFF;" wrappingWidth="35.0" />
-                                 </graphic>
-                              </JFXButton>
-                           </children>
-                           <styleClass>
-                              <String fx:value="card-subtitle" />
-                              <String fx:value="card-unpadded" />
-                           </styleClass>
-                        </GridPane>
-                     </children>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </HBox>
+                     <VBox.margin>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
                </children>
-            </AnchorPane>
+            </VBox>
          </children>
-      </StackPane>
-   </children>
-</AnchorPane>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets left="20.0" right="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+   <top>
+      <HBox alignment="BOTTOM_CENTER" minHeight="-Infinity" prefHeight="60.0">
+         <children>
+            <JFXButton fx:id="addbtn" buttonType="RAISED" graphicTextGap="2.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #245176; -fx-text-fill: #FFFFFF;" text="%add.btn">
+               <graphic>
+                  <MaterialDesignIconView glyphName="LIBRARY_PLUS" style="-fx-font-size: 24; -fx-fill: white;" wrappingWidth="32.0" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="5.0" right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="updatebtn" buttonType="RAISED" graphicTextGap="2.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #245176; -fx-text-fill: #FFFFFF;" text="%update.btn">
+               <graphic>
+                  <MaterialDesignIconView glyphName="BORDER_COLOR" style="-fx-font-size: 26; -fx-fill: white;" wrappingWidth="26.0" />
+               </graphic>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="delbtn" buttonType="RAISED" minHeight="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="%delete.btn">
+               <graphic>
+                  <MaterialDesignIconView glyphName="DELETE" size="30" style="-fx-fill: #FFFFFF; -fx-font-size: 24;" wrappingWidth="35.0" />
+               </graphic>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="adSearchbtn" buttonType="RAISED" minHeight="-Infinity" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #245176;" text="%adsearch.btn" textFill="#fffefe">
+               <font>
+                  <Font name="Roboto Black" size="13.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="SEARCH" size="12" style="-fx-font-family: FONTAWESOME; -fx-font-size: 22;" wrappingWidth="25.0" />
+               </graphic>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXTextField fx:id="searchtxt" focusColor="#1564c0" labelFloat="true" maxWidth="583.0" minWidth="214.0" prefHeight="30.0" prefWidth="355.0" promptText="  Start Typing To Search..." style="-fx-font-style: italic;" styleClass="card-unpadded" unFocusColor="#606160">
+               <font>
+                  <Font name="Roboto Black" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="2.0" right="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <bottom>
+      <BorderPane prefHeight="97.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <top>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="45.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="120.0" text="Export">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <graphic>
+                        <MaterialDesignIconView glyphName="FILE_EXCEL" size="30" style="-fx-fill: green;" wrappingWidth="35.0" />
+                     </graphic>
+                  </Label>
+                  <Label prefHeight="36.0" prefWidth="120.0" text="Print">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <graphic>
+                        <MaterialDesignIconView glyphName="PRINTER" />
+                     </graphic>
+                  </Label>
+                  <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="206.0" text="Print Barcode Stickers" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <graphic>
+                        <MaterialDesignIconView glyphName="BARCODE" style="-fx-font-size: 38;" />
+                     </graphic>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="25.0" />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox prefHeight="45.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </bottom>
+</BorderPane>
