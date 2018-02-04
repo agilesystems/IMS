@@ -32,17 +32,17 @@
                         <HBox fx:id="searchBox" alignment="CENTER_LEFT" prefHeight="100.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label text="  Search By: " HBox.hgrow="ALWAYS" />
-                              <JFXComboBox prefHeight="30.0" prefWidth="202.0" promptText="%category" HBox.hgrow="ALWAYS">
+                              <JFXComboBox fx:id="categoryCB" prefHeight="30.0" prefWidth="202.0" promptText="%category" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </JFXComboBox>
-                              <JFXComboBox layoutX="90.0" layoutY="13.0" prefHeight="30.0" prefWidth="202.0" promptText="%brand" HBox.hgrow="ALWAYS">
+                              <JFXComboBox fx:id="brandCB" layoutX="90.0" layoutY="13.0" prefHeight="30.0" prefWidth="202.0" promptText="%brand" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </JFXComboBox>
-                              <JFXComboBox layoutX="292.0" layoutY="13.0" prefHeight="30.0" prefWidth="202.0" promptText="%supplier" HBox.hgrow="ALWAYS">
+                              <JFXComboBox fx:id="supplierCB" layoutX="292.0" layoutY="13.0" prefHeight="30.0" prefWidth="202.0" promptText="%supplier" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
