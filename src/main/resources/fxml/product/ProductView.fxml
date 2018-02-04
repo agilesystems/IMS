@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -23,37 +25,65 @@
             <Insets left="20.0" />
          </BorderPane.margin>
          <children>
-            <VBox prefHeight="493.0" prefWidth="506.0" HBox.hgrow="ALWAYS">
+            <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="367.0" prefWidth="673.0" styleClass="card-unpadded" VBox.vgrow="ALWAYS">
+                  <HBox fx:id="searchBoxParent">
                      <children>
-                        <HBox alignment="CENTER" fillHeight="false" prefHeight="30.0" prefWidth="361.0" style="-fx-background-color: #0f818b;" styleClass="card-unpadded">
-                           <padding>
-                              <Insets bottom="30.0" top="30.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets left="100.0" right="100.0" top="-15.0" />
-                           </VBox.margin>
+                        <HBox fx:id="searchBox" alignment="CENTER_LEFT" prefHeight="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label styleClass="custom-white-title-label" text="Products List" />
+                              <Label text="  Search By: " HBox.hgrow="ALWAYS" />
+                              <JFXComboBox prefHeight="30.0" prefWidth="202.0" promptText="%category" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </JFXComboBox>
+                              <JFXComboBox layoutX="90.0" layoutY="13.0" prefHeight="30.0" prefWidth="202.0" promptText="%brand" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXComboBox>
+                              <JFXComboBox layoutX="292.0" layoutY="13.0" prefHeight="30.0" prefWidth="202.0" promptText="%supplier" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXComboBox>
                            </children>
                         </HBox>
-                        <TableView fx:id="tableView" prefHeight="349.0" prefWidth="506.0" VBox.vgrow="ALWAYS">
-                           <columns>
-                              <TableColumn prefWidth="119.0" text="%id.col" />
-                              <TableColumn prefWidth="311.0" text="%pro.name.col" />
-                              <TableColumn prefWidth="326.0" text="%price.col" />
-                           </columns>
-                           <VBox.margin>
-                              <Insets bottom="1.0" left="1.0" right="1.0" top="10.0" />
-                           </VBox.margin>
-                        </TableView>
                      </children>
+                  </HBox>
+                  <VBox prefHeight="493.0" prefWidth="506.0">
+                     <children>
+                        <VBox prefHeight="367.0" prefWidth="673.0" styleClass="card-unpadded" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" fillHeight="false" prefHeight="30.0" prefWidth="361.0" style="-fx-background-color: #0f818b;" styleClass="card-unpadded">
+                                 <padding>
+                                    <Insets bottom="30.0" top="30.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets left="100.0" right="100.0" top="-15.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Label styleClass="custom-white-title-label" text="Products List" />
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tableView" prefHeight="349.0" prefWidth="506.0" VBox.vgrow="ALWAYS">
+                                 <columns>
+                                    <TableColumn prefWidth="119.0" text="%id.col" />
+                                    <TableColumn prefWidth="311.0" text="%pro.name.col" />
+                                    <TableColumn prefWidth="326.0" text="%price.col" />
+                                 </columns>
+                                 <VBox.margin>
+                                    <Insets bottom="1.0" left="1.0" right="1.0" top="10.0" />
+                                 </VBox.margin>
+                              </TableView>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
                   </VBox>
                </children>
-               <padding>
-                  <Insets top="30.0" />
-               </padding>
             </VBox>
          </children>
       </HBox>
@@ -187,51 +217,32 @@
       </VBox>
    </right>
    <top>
-      <HBox alignment="BOTTOM_CENTER" minHeight="-Infinity" prefHeight="60.0">
+      <HBox alignment="BOTTOM_LEFT" minHeight="-Infinity" prefHeight="60.0">
          <children>
-            <JFXButton fx:id="addbtn" buttonType="RAISED" graphicTextGap="2.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #245176; -fx-text-fill: #FFFFFF;" text="%add.btn">
-               <graphic>
-                  <MaterialDesignIconView glyphName="LIBRARY_PLUS" style="-fx-font-size: 24; -fx-fill: white;" wrappingWidth="32.0" />
-               </graphic>
-               <HBox.margin>
-                  <Insets left="5.0" right="20.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="updatebtn" buttonType="RAISED" graphicTextGap="2.0" minHeight="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: #245176; -fx-text-fill: #FFFFFF;" text="%update.btn">
-               <graphic>
-                  <MaterialDesignIconView glyphName="BORDER_COLOR" style="-fx-font-size: 26; -fx-fill: white;" wrappingWidth="26.0" />
-               </graphic>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="delbtn" buttonType="RAISED" minHeight="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="%delete.btn">
-               <graphic>
-                  <MaterialDesignIconView glyphName="DELETE" size="30" style="-fx-fill: #FFFFFF; -fx-font-size: 24;" wrappingWidth="35.0" />
-               </graphic>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="adSearchbtn" buttonType="RAISED" minHeight="-Infinity" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: #245176;" text="%adsearch.btn" textFill="#fffefe">
-               <font>
-                  <Font name="Roboto Black" size="13.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="SEARCH" size="12" style="-fx-font-family: FONTAWESOME; -fx-font-size: 22;" wrappingWidth="25.0" />
-               </graphic>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXTextField fx:id="searchtxt" focusColor="#1564c0" labelFloat="true" maxWidth="583.0" minWidth="214.0" prefHeight="30.0" prefWidth="355.0" promptText="  Start Typing To Search..." style="-fx-font-style: italic;" styleClass="card-unpadded" unFocusColor="#606160">
-               <font>
-                  <Font name="Roboto Black" size="13.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="2.0" right="5.0" />
-               </HBox.margin>
-            </JFXTextField>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="60.0" prefWidth="737.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton fx:id="searchbtn" buttonType="RAISED" minHeight="-Infinity" onAction="#advacedSearch" prefHeight="32.0" prefWidth="160.0" style="-fx-background-color: #245176;" text="%adsearch.btn" textFill="#fffefe">
+                     <font>
+                        <Font name="Roboto Black" size="13.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" size="12" style="-fx-font-family: FONTAWESOME; -fx-font-size: 22;" wrappingWidth="25.0" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXTextField fx:id="searchtxt" focusColor="#1564c0" labelFloat="true" minWidth="214.0" prefHeight="30.0" prefWidth="550.0" promptText="  Start Typing To Search..." style="-fx-font-style: italic;" styleClass="card-unpadded" unFocusColor="#606160" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="Roboto Black" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="60.0" prefWidth="392.0" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -242,6 +253,34 @@
       <BorderPane prefHeight="97.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <top>
             <HBox alignment="BOTTOM_LEFT" prefHeight="45.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="25.0" />
+               </BorderPane.margin>
+               <children>
+                  <ButtonBar>
+                     <buttons>
+                        <JFXButton fx:id="addbtn" buttonType="RAISED" graphicTextGap="2.0" minHeight="-Infinity" onAction="#addProduct" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #245176; -fx-text-fill: #FFFFFF;" text="%add.btn">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="LIBRARY_PLUS" style="-fx-font-size: 24; -fx-fill: white;" wrappingWidth="32.0" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="updatebtn" buttonType="RAISED" graphicTextGap="2.0" minHeight="-Infinity" onAction="#updateProduct" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #245176; -fx-text-fill: #FFFFFF;" text="%update.btn">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="BORDER_COLOR" style="-fx-font-size: 26; -fx-fill: white;" wrappingWidth="26.0" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="delbtn" buttonType="RAISED" minHeight="-Infinity" prefHeight="32.0" prefWidth="125.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #C2352A;" text="%delete.btn">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="DELETE" size="30" style="-fx-fill: #FFFFFF; -fx-font-size: 24;" wrappingWidth="35.0" />
+                           </graphic>
+                        </JFXButton>
+                     </buttons>
+                  </ButtonBar>
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox prefHeight="45.0" BorderPane.alignment="CENTER">
                <children>
                   <Label prefHeight="35.0" prefWidth="120.0" text="Export">
                      <font>
@@ -251,7 +290,7 @@
                         <MaterialDesignIconView glyphName="FILE_EXCEL" size="30" style="-fx-fill: green;" wrappingWidth="35.0" />
                      </graphic>
                   </Label>
-                  <Label prefHeight="36.0" prefWidth="120.0" text="Print">
+                  <Label prefHeight="36.0" prefWidth="120.0" text="Print List">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -270,11 +309,7 @@
                </children>
                <BorderPane.margin>
                   <Insets left="25.0" />
-               </BorderPane.margin>
-            </HBox>
-         </top>
-         <bottom>
-            <HBox prefHeight="45.0" BorderPane.alignment="CENTER" />
+               </BorderPane.margin></HBox>
          </bottom>
       </BorderPane>
    </bottom>

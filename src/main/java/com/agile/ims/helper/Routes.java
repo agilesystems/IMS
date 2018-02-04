@@ -30,6 +30,8 @@ public class Routes {
     public static String APPOINTMENTSVIEW = "/fxml/appointment/AppointmentView.fxml";
     public static String DOCTORSVIEW = "/fxml/doctor/DoctorsView.fxml";
     public static String WELCOMEVIEW = "/fxml/home/WelcomeView.fxml";
+    public static String ADDPRODUCT = "/fxml/product/AddProduct.fxml";
+    
     public static int HOME_ID = 1;
     public static HashMap<Integer, Node> forms;
 
