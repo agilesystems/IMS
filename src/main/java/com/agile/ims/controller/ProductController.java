@@ -142,7 +142,8 @@ public class ProductController implements Initializable {
         autoCompleteComboBox(categoryCB);
         autoCompleteComboBox(brandCB);
         autoCompleteComboBox(supplierCB);
-
+        
+        tableList();
     }
 
     @FXML
@@ -176,7 +177,7 @@ public class ProductController implements Initializable {
         new AutoCompleteComboBoxListener(comboBox);
 
     }
-
+    //Get All Product With Custom Fields 
     public void tableList() {
         try {
             ObservableList list = FXCollections.observableArrayList(itemService.getAll());
