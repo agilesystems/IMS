@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,89 +15,129 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="addProductRoot" minHeight="500.0" minWidth="700.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.AddProductController">
+<HBox fx:id="addProductRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agile.ims.controller.AddProductController">
    <children>
-      <VBox HBox.hgrow="ALWAYS">
+      <VBox prefHeight="600.0" prefWidth="900.0" HBox.hgrow="ALWAYS">
          <children>
-            <BorderPane prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+            <BorderPane prefHeight="600.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
                <center>
-                  <GridPane>
+                  <GridPane prefWidth="588.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="id" labelFloat="true" prefHeight="28.0" prefWidth="260.0" promptText="ID" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-                        <JFXTextField fx:id="name" labelFloat="true" layoutX="110.0" layoutY="71.0" prefHeight="28.0" prefWidth="260.0" promptText="Name" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-                        <JFXTextField fx:id="expired" labelFloat="true" layoutX="110.0" layoutY="131.0" prefHeight="28.0" prefWidth="260.0" promptText="Expired" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="16" />
-                        <JFXTextField fx:id="groupId" labelFloat="true" layoutX="110.0" layoutY="71.0" prefHeight="28.0" prefWidth="260.0" promptText="Group ID" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="10" />
-                        <JFXTextField fx:id="unitId" labelFloat="true" layoutX="110.0" layoutY="131.0" prefHeight="30.0" prefWidth="260.0" promptText="Unit Id" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="7" />
-                        <JFXTextField fx:id="BuyPrice" labelFloat="true" layoutX="110.0" layoutY="191.0" prefHeight="28.0" prefWidth="260.0" promptText="Buy Price" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="13" />
-                        <JFXDatePicker fx:id="expDate" prefHeight="28.0" prefWidth="260.0" promptText="EXP Date" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="19" />
-                        <JFXDatePicker fx:id="mfgDate" prefHeight="28.0" prefWidth="260.0" promptText="MFG Date" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="16" />
-                        <JFXButton onAction="#saveproduct" prefHeight="40.0" prefWidth="135.0" text="Save" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="25" GridPane.rowSpan="2" />
-                        <JFXButton layoutX="222.0" layoutY="396.0" onAction="#resetFields" prefHeight="40.0" prefWidth="135.0" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="25" GridPane.rowSpan="2" />
-                        <JFXButton layoutX="420.0" layoutY="396.0" onAction="#cancel" prefHeight="40.0" prefWidth="135.0" text="Cancel" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="25" GridPane.rowSpan="2" />
-                        <JFXTextField fx:id="lowestPrice" labelFloat="true" layoutX="376.0" layoutY="224.0" prefHeight="28.0" prefWidth="260.0" promptText="Lowest Price" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="10" />
-                        <JFXTextField fx:id="lowestQunt" labelFloat="true" layoutX="376.0" layoutY="294.0" prefHeight="28.0" prefWidth="260.0" promptText="Lowest Quantity" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="13" />
-                        <JFXTextField fx:id="barcode" labelFloat="true" layoutX="376.0" layoutY="364.0" prefHeight="28.0" prefWidth="260.0" promptText="Barcode" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-                        <JFXTextField fx:id="localCode" labelFloat="true" layoutX="681.0" layoutY="224.0" prefHeight="28.0" prefWidth="260.0" promptText="Local Code" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="7" />
-                        <JFXTextField fx:id="globalCode" labelFloat="true" layoutX="681.0" layoutY="294.0" prefHeight="28.0" prefWidth="260.0" promptText="Global Code" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-                        <JFXTextField fx:id="sellPrice" labelFloat="true" layoutX="681.0" layoutY="364.0" prefHeight="28.0" prefWidth="260.0" promptText="Sell Price" style="-fx-background-color: inherit;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="19" />
-                        <JFXTextArea fx:id="extraInfo" labelFloat="true" prefWidth="710.0" promptText="Extra Info" style="-fx-background-color: inherit;" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="8" GridPane.rowIndex="22" GridPane.rowSpan="2" />
-                        <StackPane styleClass="card-unpadded" GridPane.columnIndex="10" GridPane.rowIndex="11">
+                        <JFXTextField fx:id="name" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Name" style="-fx-background-color: inherit;">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="barcode" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Barcode" style="-fx-background-color: inherit;" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="globalCode" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Global Code" style="-fx-background-color: inherit;" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="localCode" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Local Code" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="BuyPrice" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Buy Price" style="-fx-background-color: inherit;" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="sellPrice" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Sell Price" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXDatePicker fx:id="mfgDate" prefHeight="28.0" prefWidth="220.0" promptText="MFG Date" style="-fx-background-color: inherit;" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXDatePicker>
+                        <JFXDatePicker fx:id="expDate" prefHeight="28.0" prefWidth="220.0" promptText="EXP Date" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXDatePicker>
+                        <JFXTextField fx:id="lowestPrice" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Lowest Price" style="-fx-background-color: inherit;" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="lowestQunt" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Lowest Quantity" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="unitId" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Unit ID" style="-fx-background-color: inherit;" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="groupId" labelFloat="true" prefHeight="28.0" prefWidth="220.0" promptText="Group ID" style="-fx-background-color: inherit;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextField fx:id="expired" labelFloat="true" prefHeight="30.0" prefWidth="220.0" promptText="Expired" style="-fx-background-color: inherit;" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextField>
+                        <JFXTextArea fx:id="extraInfo" labelFloat="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="220.0" promptText="Extra Info" style="-fx-background-color: inherit;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </GridPane.margin></JFXTextArea>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="15.0" left="10.0" right="10.0" />
+                     </BorderPane.margin>
+                  </GridPane>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="900.0" BorderPane.alignment="CENTER_LEFT">
+                     <children>
+                        <JFXButton fx:id="saveBtn" buttonType="RAISED" onAction="#saveproduct" prefHeight="40.0" prefWidth="135.0" text="Save">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" onAction="#resetFields" prefHeight="40.0" prefWidth="135.0" text="Reset">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" onAction="#cancel" prefHeight="40.0" prefWidth="135.0" text="Cancel">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </bottom>
+               <right>
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <StackPane styleClass="card-unpadded">
                            <children>
                               <Label alignment="CENTER" prefHeight="20.0" prefWidth="221.0" text="Add Product Image" />
                               <ImageView fx:id="imgView" fitHeight="187.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </StackPane>
-                        <JFXButton onAction="#btnAttachImageOnAction" prefHeight="36.0" prefWidth="248.0" text="Image" GridPane.columnIndex="10" GridPane.columnSpan="4" GridPane.rowIndex="17" GridPane.rowSpan="2" />
+                        <JFXButton onAction="#btnAttachImageOnAction" prefHeight="36.0" prefWidth="248.0" text="Image" />
                      </children>
-                  </GridPane>
-               </center>
+                     <BorderPane.margin>
+                        <Insets right="20.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </right>
             </BorderPane>
          </children>
       </VBox>
