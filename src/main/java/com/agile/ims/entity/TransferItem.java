@@ -27,14 +27,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(catalog = "inventory", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Invoiceitem.findAll", query = "SELECT i FROM Invoiceitem i")
-    , @NamedQuery(name = "Invoiceitem.findById", query = "SELECT i FROM Invoiceitem i WHERE i.id = :id")
-    , @NamedQuery(name = "Invoiceitem.findByQuantity", query = "SELECT i FROM Invoiceitem i WHERE i.quantity = :quantity")
-    , @NamedQuery(name = "Invoiceitem.findByPrice", query = "SELECT i FROM Invoiceitem i WHERE i.price = :price")
-    , @NamedQuery(name = "Invoiceitem.findByDiscountpr", query = "SELECT i FROM Invoiceitem i WHERE i.discountpr = :discountpr")
-    , @NamedQuery(name = "Invoiceitem.findByDiscountvalue", query = "SELECT i FROM Invoiceitem i WHERE i.discountvalue = :discountvalue")
-    , @NamedQuery(name = "Invoiceitem.findByTotal", query = "SELECT i FROM Invoiceitem i WHERE i.total = :total")})
-public class Invoiceitem implements Serializable {
+    @NamedQuery(name = "Transferitem.findAll", query = "SELECT t FROM Transferitem t")
+    , @NamedQuery(name = "Transferitem.findById", query = "SELECT t FROM Transferitem t WHERE t.id = :id")
+    , @NamedQuery(name = "Transferitem.findByQuantity", query = "SELECT t FROM Transferitem t WHERE t.quantity = :quantity")
+    , @NamedQuery(name = "Transferitem.findByPrice", query = "SELECT t FROM Transferitem t WHERE t.price = :price")})
+public class TransferItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,20 +41,17 @@ public class Invoiceitem implements Serializable {
     private Integer quantity;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     private Float price;
-    private Integer discountpr;
-    private Float discountvalue;
-    private Float total;
-    @JoinColumn(name = "invoiceid", referencedColumnName = "id")
+    @JoinColumn(name = "transferid", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
-    private Invoice invoiceid;
+    private Transfer transferid;
     @JoinColumn(name = "itemid", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
     private Item itemid;
 
-    public Invoiceitem() {
+    public TransferItem() {
     }
 
-    public Invoiceitem(Integer id) {
+    public TransferItem(Integer id) {
         this.id = id;
     }
 
@@ -85,36 +79,12 @@ public class Invoiceitem implements Serializable {
         this.price = price;
     }
 
-    public Integer getDiscountpr() {
-        return discountpr;
+    public Transfer getTransferid() {
+        return transferid;
     }
 
-    public void setDiscountpr(Integer discountpr) {
-        this.discountpr = discountpr;
-    }
-
-    public Float getDiscountvalue() {
-        return discountvalue;
-    }
-
-    public void setDiscountvalue(Float discountvalue) {
-        this.discountvalue = discountvalue;
-    }
-
-    public Float getTotal() {
-        return total;
-    }
-
-    public void setTotal(Float total) {
-        this.total = total;
-    }
-
-    public Invoice getInvoiceid() {
-        return invoiceid;
-    }
-
-    public void setInvoiceid(Invoice invoiceid) {
-        this.invoiceid = invoiceid;
+    public void setTransferid(Transfer transferid) {
+        this.transferid = transferid;
     }
 
     public Item getItemid() {
@@ -135,10 +105,10 @@ public class Invoiceitem implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Invoiceitem)) {
+        if (!(object instanceof TransferItem)) {
             return false;
         }
-        Invoiceitem other = (Invoiceitem) object;
+        TransferItem other = (TransferItem) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -147,7 +117,7 @@ public class Invoiceitem implements Serializable {
 
     @Override
     public String toString() {
-        return "com.agile.ims.entity.Invoiceitem[ id=" + id + " ]";
+        return "com.agile.ims.entity.Transferitem[ id=" + id + " ]";
     }
 
 }
