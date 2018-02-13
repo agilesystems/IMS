@@ -6,6 +6,8 @@
 package com.agile.ims.helper;
 
 import com.agile.ims.IMS;
+import static com.agile.ims.IMS.bundle;
+import static com.agile.ims.IMS.context;
 import com.agile.ims.controller.ProductController;
 import com.jfoenix.controls.JFXDecorator;
 import java.io.IOException;
@@ -83,7 +85,11 @@ public class Helper {
 
     public static void newStage(Node fxmlLoader, String resource, Node parentNodeOrientation, String decoratorTitle) {
         try {
-            fxmlLoader = FXMLLoader.load(IMS.class.getClass().getResource(resource), IMS.bundle);
+            //fxmlLoader = FXMLLoader.load(IMS.class.getClass().getResource(resource), IMS.bundle);
+            FXMLLoader loader=new FXMLLoader(IMS.class.getClass().getResource(resource),bundle);
+            
+            loader.setControllerFactory(context::getBean);
+            fxmlLoader=loader.load();
             NodeOrientation orientation = parentNodeOrientation.getEffectiveNodeOrientation();
             if (orientation == NodeOrientation.RIGHT_TO_LEFT) {
                 fxmlLoader.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);

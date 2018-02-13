@@ -6,6 +6,7 @@
 package com.agile.ims.helper;
 
 import com.agile.ims.IMS;
+import static com.agile.ims.IMS.context;
 import com.agile.ims.controller.HomeViewController;
 import com.agile.ims.entity.UserMenu;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class Routes {
     public static String DOCTORSVIEW = "/fxml/doctor/DoctorsView.fxml";
     public static String WELCOMEVIEW = "/fxml/home/WelcomeView.fxml";
     public static String ADDPRODUCT = "/fxml/product/AddProduct.fxml";
-    
+
     public static int HOME_ID = 1;
     public static HashMap<Integer, Node> forms;
 
@@ -41,7 +42,7 @@ public class Routes {
             if (key == id) {
                 if (forms.get(key) == null) {
                     try {
-                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)), IMS.bundle);
+                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)), IMS.bundle, null, (context::getBean));
                     } catch (IOException ex) {
                         Logger.getLogger(Routes.class.getName()).log(Level.SEVERE, null, ex);
                     }

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Muhammad
  */
-@Service
+//@Service
 public interface ItemService {
 
     /**

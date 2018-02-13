@@ -10,11 +10,13 @@ import com.agile.ims.repository.ItemRepository;
 import java.util.Collection;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author mhdsy
  */
+@Service
 public class ItemServiceImpl implements ItemService{
 
     @Autowired
