@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(catalog = "inventory", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Transferitem.findAll", query = "SELECT t FROM Transferitem t")
-    , @NamedQuery(name = "Transferitem.findById", query = "SELECT t FROM Transferitem t WHERE t.id = :id")
-    , @NamedQuery(name = "Transferitem.findByQuantity", query = "SELECT t FROM Transferitem t WHERE t.quantity = :quantity")
-    , @NamedQuery(name = "Transferitem.findByPrice", query = "SELECT t FROM Transferitem t WHERE t.price = :price")})
+    @NamedQuery(name = "TransferItem.findAll", query = "SELECT t FROM TransferItem t")
+    , @NamedQuery(name = "TransferItem.findById", query = "SELECT t FROM TransferItem t WHERE t.id = :id")
+    , @NamedQuery(name = "TransferItem.findByQuantity", query = "SELECT t FROM TransferItem t WHERE t.quantity = :quantity")
+    , @NamedQuery(name = "TransferItem.findByPrice", query = "SELECT t FROM TransferItem t WHERE t.price = :price")})
 public class TransferItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -117,7 +117,7 @@ public class TransferItem implements Serializable {
 
     @Override
     public String toString() {
-        return "com.agile.ims.entity.Transferitem[ id=" + id + " ]";
+        return "com.agile.ims.entity.TransferItem[ id=" + id + " ]";
     }
 
 }

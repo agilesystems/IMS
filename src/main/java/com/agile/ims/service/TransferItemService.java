@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
  * @author Muhammad
  */
 @Service
-public interface TransferitemService {
+public interface TransferItemService {
 
-    boolean save(TransferItem transferItem);
+    boolean save(TransferItem TransferItem);
 
-    boolean delete(TransferItem transferitem);
+    boolean delete(TransferItem TransferItem);
 
     Collection<TransferItem> getByItemid(Item item);
 }

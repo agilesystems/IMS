@@ -97,7 +97,7 @@ public class Item implements Serializable {
     @OneToMany(mappedBy = "itemid")
     private Collection<InvoiceItem> invoiceItemCollection;
     @OneToMany(mappedBy = "itemid")
-    private Collection<TransferItem> transferItemCollection;
+    private Collection<TransferItem> TransferItemCollection;
     @OneToMany(mappedBy = "itemid")
     private Collection<StoreItem> storeItemCollection;
 
@@ -285,11 +285,11 @@ public class Item implements Serializable {
     }
 
     public Collection<TransferItem> getTransferItemCollection() {
-        return transferItemCollection;
+        return TransferItemCollection;
     }
 
-    public void setTransferItemCollection(Collection<TransferItem> transferItemCollection) {
-        this.transferItemCollection = transferItemCollection;
+    public void setTransferItemCollection(Collection<TransferItem> TransferItemCollection) {
+        this.TransferItemCollection = TransferItemCollection;
     }
 
     public Collection<StoreItem> getStoreItemCollection() {

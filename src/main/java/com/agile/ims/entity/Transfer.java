@@ -64,7 +64,7 @@ public class Transfer implements Serializable {
     @ManyToOne
     private User createdby;
     @OneToMany(mappedBy = "transferid")
-    private Collection<TransferItem> transferItemCollection;
+    private Collection<TransferItem> TransferItemCollection;
 
     public Transfer() {
     }
@@ -154,11 +154,11 @@ public class Transfer implements Serializable {
     }
 
     public Collection<TransferItem> getTransferItemCollection() {
-        return transferItemCollection;
+        return TransferItemCollection;
     }
 
-    public void setTransferItemCollection(Collection<TransferItem> transferItemCollection) {
-        this.transferItemCollection = transferItemCollection;
+    public void setTransferItemCollection(Collection<TransferItem> TransferItemCollection) {
+        this.TransferItemCollection = TransferItemCollection;
     }
 
     @Override
