@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author Muhammad
  */
 @Service
-public interface InvoiceitemService {
+public interface InvoiceItemService {
 
     /**
      * this method to add new Or update Current of the invoice item , this

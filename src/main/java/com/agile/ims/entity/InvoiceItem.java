@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(catalog = "inventory", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Invoiceitem.findAll", query = "SELECT i FROM Invoiceitem i")
-    , @NamedQuery(name = "Invoiceitem.findById", query = "SELECT i FROM Invoiceitem i WHERE i.id = :id")
-    , @NamedQuery(name = "Invoiceitem.findByQuantity", query = "SELECT i FROM Invoiceitem i WHERE i.quantity = :quantity")
-    , @NamedQuery(name = "Invoiceitem.findByPrice", query = "SELECT i FROM Invoiceitem i WHERE i.price = :price")
-    , @NamedQuery(name = "Invoiceitem.findByDiscountpr", query = "SELECT i FROM Invoiceitem i WHERE i.discountpr = :discountpr")
-    , @NamedQuery(name = "Invoiceitem.findByDiscountvalue", query = "SELECT i FROM Invoiceitem i WHERE i.discountvalue = :discountvalue")
-    , @NamedQuery(name = "Invoiceitem.findByTotal", query = "SELECT i FROM Invoiceitem i WHERE i.total = :total")})
+    @NamedQuery(name = "InvoiceItem.findAll", query = "SELECT i FROM InvoiceItem i")
+    , @NamedQuery(name = "InvoiceItem.findById", query = "SELECT i FROM InvoiceItem i WHERE i.id = :id")
+    , @NamedQuery(name = "InvoiceItem.findByQuantity", query = "SELECT i FROM InvoiceItem i WHERE i.quantity = :quantity")
+    , @NamedQuery(name = "InvoiceItem.findByPrice", query = "SELECT i FROM InvoiceItem i WHERE i.price = :price")
+    , @NamedQuery(name = "InvoiceItem.findByDiscountpr", query = "SELECT i FROM InvoiceItem i WHERE i.discountpr = :discountpr")
+    , @NamedQuery(name = "InvoiceItem.findByDiscountvalue", query = "SELECT i FROM InvoiceItem i WHERE i.discountvalue = :discountvalue")
+    , @NamedQuery(name = "InvoiceItem.findByTotal", query = "SELECT i FROM InvoiceItem i WHERE i.total = :total")})
 public class InvoiceItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
