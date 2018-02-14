@@ -30,11 +30,11 @@ public interface ItemService {
      * This method for soft deleted the items , just update the deleted field
      * with value(1
      *
-     * @param item an Object parameter to update item
+     * @param id an Object parameter to update item
      * @return true if the item updated with deleted field or false if not
      * updated
      */
-    boolean delete(Item item);
+    boolean delete(int id);
 
     /**
      * this method to get all item
@@ -80,4 +80,18 @@ public interface ItemService {
      * date .
      */
     Collection<Item> getItemExbiredate(Date from, Date to);
+
+    /**
+     *
+     * @param Name
+     * @return
+     */
+    Collection<Item> getByName(String Name);
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    Item findByExbiredate(Date date);
 }
