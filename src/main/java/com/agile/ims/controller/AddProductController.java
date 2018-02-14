@@ -24,12 +24,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * FXML Controller class
  *
  * @author mhdsy
  */
+@Component
 public class AddProductController implements Initializable {
 
     @Autowired

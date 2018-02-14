@@ -10,11 +10,13 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author mhdsy
  */
+@Component
 public class PaymentController {
 
     @FXML
