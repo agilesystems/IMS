@@ -6,6 +6,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -276,37 +277,67 @@
                         </JFXButton>
                      </buttons>
                   </ButtonBar>
-               </children>
-            </HBox>
-         </top>
-         <bottom>
-            <HBox prefHeight="45.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label prefHeight="35.0" prefWidth="120.0" text="Export">
+                  <Label onMouseClicked="#exportToExcel" prefHeight="35.0" prefWidth="120.0" text="Export">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <graphic>
                         <MaterialDesignIconView glyphName="FILE_EXCEL" size="30" style="-fx-fill: green;" wrappingWidth="35.0" />
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
                   </Label>
-                  <Label prefHeight="36.0" prefWidth="120.0" text="Print List">
+                  <Label layoutX="445.0" layoutY="20.0" onMouseClicked="#exportToPDF" prefHeight="35.0" prefWidth="120.0" text="PDF">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <graphic>
+                        <MaterialDesignIconView glyphName="FILE_PDF" size="30" style="-fx-fill: red;" wrappingWidth="35.0" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </Label>
+                  <Label onMouseClicked="#printProducts" prefHeight="36.0" prefWidth="120.0" text="Print List">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <graphic>
                         <MaterialDesignIconView glyphName="PRINTER" />
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
                   </Label>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="206.0" text="Print Barcode Stickers" wrapText="true">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="38.0" prefWidth="212.0" text="Print Barcode Stickers" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <graphic>
                         <MaterialDesignIconView glyphName="BARCODE" style="-fx-font-size: 38;" />
                      </graphic>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
                   </Label>
                </children>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox prefHeight="45.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="25.0" />
                </BorderPane.margin></HBox>

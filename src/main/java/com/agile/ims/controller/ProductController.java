@@ -8,6 +8,7 @@ package com.agile.ims.controller;
 import com.agile.ims.helper.AutoCompleteComboBoxListener;
 import com.agile.ims.helper.Helper;
 import com.agile.ims.helper.Routes;
+import com.agile.ims.helper.ViewExportReports;
 import com.agile.ims.service.ItemService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,8 @@ public class ProductController implements Initializable {
 
     @Autowired
     ItemService itemService;
+    @Autowired
+    ViewExportReports viewExportReports;
 
     private TableColumn<?, ?> idCol;
     private TableColumn<?, ?> nameCol;
@@ -174,6 +178,21 @@ public class ProductController implements Initializable {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    private void exportToExcel(MouseEvent event) {
+        viewExportReports.exportToExcel("ProductReport.jrxml", itemService.getAll());
+    }
+
+    @FXML
+    private void printProducts(MouseEvent event) {
+        viewExportReports.viewReport("ProductReport.jrxml", itemService.getAll());
+    }
+
+    @FXML
+    private void exportToPDF(MouseEvent event) {
+        viewExportReports.exportToPDF("ProductReport.jrxml", itemService.getAll());
     }
 
 }

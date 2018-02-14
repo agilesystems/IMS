@@ -30,6 +30,7 @@ public class IMS extends Application {
     @Override
     public void init() throws Exception {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(IMS.class);
+        builder.headless(false);
         context = builder.run(getParameters().getRaw().toArray(new String[0]));
        
 

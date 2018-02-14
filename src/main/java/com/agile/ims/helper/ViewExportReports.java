@@ -36,11 +36,13 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author mhdsy
  */
+@Component
 public class ViewExportReports {
 
     /**
