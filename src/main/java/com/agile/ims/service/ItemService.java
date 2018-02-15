@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Muhammad
  */
-//@Service
+@Service
 public interface ItemService {
 
     /**
@@ -55,12 +55,12 @@ public interface ItemService {
      * this method to get the items by the lowest quantity if the current
      * quantity is near the lowest quantity or equal
      *
-     * @param item an object parameter to get items if the lowest quantity is
+     * item an object parameter to get items if the lowest quantity is
      * near current quantity or equal .
      * @return a collection of items if the lowest quantity near current
      * quantity or equal
      */
-    Collection<Item> getLowestquantity(Item item);
+    Collection<Item> getLowestquantity();
 
     /**
      * this method to find item by bacrcode
@@ -79,7 +79,7 @@ public interface ItemService {
      * @return a collection of item if the expire item between the from and to
      * date .
      */
-    Collection<Item> getItemExbiredate(Date from, Date to);
+    Collection<Item> getItemExbiredateBetween(Date from, Date to);
 
     /**
      *
@@ -94,4 +94,6 @@ public interface ItemService {
      * @return
      */
     Item findByExbiredate(Date date);
+    Item findById(int id);
+   
 }

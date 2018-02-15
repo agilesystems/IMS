@@ -33,8 +33,16 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 
     @Query("Select item From Item item Where item.expiredate = :date  AND item.deleted <> 1 ")
     Item findByExbiredate(@Param("date") Date date);
-    
-    @Query("Select item From Item item Where item.deleted <> 1")
-    Collection<Item> getAll ();
 
+    @Query("Select item From Item item Where item.deleted <> 1")
+    Collection<Item> getAll();
+
+    @Query("Select item From Item item Where item.expiredate >= :from AND item.expiredate <= :to AND item.deleted <> 1")
+    Collection<Item> findByExbiredateBetween(Date from, Date to);
+
+    @Query("select item from Item item where item.id = :id and item.deleted <> 1 ")
+    Item findById(@Param("id") int id);
+
+    /*@Query("from StoreItem si inner join si.itemid as items ")
+    Collection<Item> getLowestquantity();*/
 }

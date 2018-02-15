@@ -6,7 +6,9 @@
 package com.agile.ims.service;
 
 import com.agile.ims.entity.Item;
+import com.agile.ims.entity.StoreItem;
 import com.agile.ims.repository.ItemRepository;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +53,16 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Collection<Item> getLowestquantity(Item item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Collection<Item> getLowestquantity() {
+       Collection<Item> allitem = new ArrayList<>();
+        for (Item item : getAll()) {
+            for (StoreItem storeItem : item.getStoreItemCollection()) {
+                if (storeItem.getQuantity() <= item.getLowestquantity()) {
+                    allitem.add(item);
+                }
+            }
+        }
+        return allitem;
     }
 
     @Override
@@ -66,8 +76,13 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Collection<Item> getItemExbiredate(Date from, Date to) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Collection<Item> getItemExbiredateBetween(Date from, Date to) {
+        if (itemRepository.findByExbiredateBetween(from, to) != null) {
+            return itemRepository.findByExbiredateBetween(from, to);
+        } else {
+            return null;
+        }
+
     }
 
     @Override
@@ -86,6 +101,16 @@ public class ItemServiceImpl implements ItemService {
 
         if (itemRepository.findByExbiredate(date) != null) {
             return itemRepository.findByExbiredate(date);
+        } else {
+            return null;
+        }
+
+    }
+
+    @Override
+    public Item findById(int id) {
+        if (itemRepository.findById(id) != null) {
+            return itemRepository.findById(id);
         } else {
             return null;
         }
