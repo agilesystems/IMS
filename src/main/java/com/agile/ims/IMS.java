@@ -19,14 +19,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class IMS extends Application {
 
+    
     public static User user;
     public static ConfigurableApplicationContext context;
     private Parent root;
     public static Stage stage;
     public static ResourceBundle bundle;
 
+
     @Override
     public void init() throws Exception {
+        
         SpringApplicationBuilder builder = new SpringApplicationBuilder(IMS.class);
         builder.headless(false);
         context = builder.run(getParameters().getRaw().toArray(new String[0]));

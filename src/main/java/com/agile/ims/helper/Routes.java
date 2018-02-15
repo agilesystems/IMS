@@ -17,19 +17,18 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.util.Duration;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author danml
  */
+@Component
 public class Routes {
 
     public static String LOGINVIEW = "/fxml/login/Login.fxml";
     public static String MAINVIEW = "/fxml/home/HomeView.fxml";
     public static String DRAWERVIEW = "/fxml/home/Drawer.fxml";
-//    public static String PAYMENTSVIEW = "/fxml/payment/PaymentsView.fxml";
-//    public static String APPOINTMENTSVIEW = "/fxml/appointment/AppointmentView.fxml";
-//    public static String DOCTORSVIEW = "/fxml/doctor/DoctorsView.fxml";
     public static String WELCOMEVIEW = "/fxml/home/WelcomeView.fxml";
     public static String ADDPRODUCT = "/fxml/product/AddProduct.fxml";
 
@@ -37,12 +36,12 @@ public class Routes {
     public static HashMap<Integer, Node> forms;
 
     public static Node anchorPane(int id) {
-
+        
         for (int key : forms.keySet()) {
             if (key == id) {
                 if (forms.get(key) == null) {
                     try {
-                        return FXMLLoader.load(IMS.class.getClass().getResource(getFXML(key)), IMS.bundle, null, (context::getBean));
+                        return FXMLLoader.load(Routes.class.getResource(getFXML(key)), IMS.bundle, null, (context::getBean));
                     } catch (IOException ex) {
                         Logger.getLogger(Routes.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -57,7 +56,6 @@ public class Routes {
     private static String getFXML(int id) {
 
         for (UserMenu um : IMS.user.getUserMenuCollection()) {
-
             if (id == um.getId()) {
                 return um.getFxml();
             }
