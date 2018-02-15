@@ -38,11 +38,11 @@ public interface StoreItemService {
     /**
      * Returns the collection of store items by item id
      *
-     * @param item an object parameter to get the collection of store item by
+     * @param itemid an object parameter to get the collection of store item by
      * the item
      * @return a collection of store items
      */
-    Collection<StoreItem> getByItemid(Item item);
+    StoreItem getByItemid(int itemid);
 
     /**
      * Returns the collection of store items by store id
